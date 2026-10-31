@@ -88,7 +88,7 @@
         <Neanderthal MayRequire="Ludeon.RimWorld.Biotech">0.03</Neanderthal>
         <Genie MayRequire="Ludeon.RimWorld.Biotech">0.03</Genie>
         <Starjack MayRequire="Ludeon.RimWorld.Biotech,Ludeon.RimWorld.Odyssey">0.03</Starjack>
-        <Nephilim MayRequire="Sov.Nephilim">0.03</Nephilim>
+        <GS_Nephilim MayRequire="Sov.Nephilim">0.03</GS_Nephilim>
       </xenotypeChances>
     </xenotypeSet>
   </PawnKindDef>
