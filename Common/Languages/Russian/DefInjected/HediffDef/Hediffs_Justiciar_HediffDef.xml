@@ -1,0 +1,28 @@
+<LanguageData>
+	<!-- Common\Defs\HediffDefs\Hediffs_Justiciar.xml -->
+	<!--                   EN: sensed murderous intent -->
+	<MJV_MurderousIntent.label>ощущаемое убийственное намерение</MJV_MurderousIntent.label>
+	<!--                         EN: The Promachos helmet senses hostile intent directed at its wearer. With each source of such a thought, it sends an additional stimulating impulse into the wearer's brain, quickening their reactions and movement. The more enemies aim at the wearer, the stronger this impulse. -->
+	<MJV_MurderousIntent.description>Шлем «Промахос» улавливает враждебные намерения, направленные на владельца. На каждый источник такой мысли он посылает в мозг владельца дополнительный стимулирующий импульс, ускоряя реакцию и движения. Чем больше врагов целится во владельца, тем сильнее импульс.</MJV_MurderousIntent.description>
+	<!--                            EN: alert -->
+	<MJV_MurderousIntent.stages.0.label>настороженность</MJV_MurderousIntent.stages.0.label>
+	<!--                            EN: keen -->
+	<MJV_MurderousIntent.stages.1.label>обострённые чувства</MJV_MurderousIntent.stages.1.label>
+	<!--                            EN: battle trance -->
+	<MJV_MurderousIntent.stages.2.label>боевой транс</MJV_MurderousIntent.stages.2.label>
+	
+	<!--               EN: psychic daze -->
+	<MJV_PsychicDaze.label>психическое оцепенение</MJV_PsychicDaze.label>
+	<!--                     EN: Reeling from an eltex psychic wave. Movement and awareness are dulled for a few seconds. -->
+	<MJV_PsychicDaze.description>Ошеломление после эльтексовой психической волны. Движения и восприятие притуплены на несколько секунд.</MJV_PsychicDaze.description>
+	
+	<!--              EN: psy-orb drag -->
+	<MJV_PsyOrbSlow.label>торможение пси-сферой</MJV_PsyOrbSlow.label>
+	<!--                    EN: A psy-orb's residual field clings to this creature's nerves, slowing its movement. -->
+	<MJV_PsyOrbSlow.description>Остаточное поле пси-сферы цепляется за нервы существа и замедляет его движения.</MJV_PsyOrbSlow.description>
+	
+	<!--                     EN: Invictus overdrive -->
+	<MJV_InvictusOverdrive.label>форсаж «Непокорённый»</MJV_InvictusOverdrive.label>
+	<!--                           EN: The Promachos armor dumped its stored energy into the shield and servos. The wearer moves and strikes at a blinding pace. -->
+	<MJV_InvictusOverdrive.description>Броня «Промахос» сбросила накопленную энергию в щит и сервоприводы. Носитель двигается и бьёт с ослепительной скоростью.</MJV_InvictusOverdrive.description>
+</LanguageData>

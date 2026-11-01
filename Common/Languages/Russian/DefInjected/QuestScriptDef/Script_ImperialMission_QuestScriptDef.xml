@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- Common\Defs\QuestScriptDefs\Script_ImperialMission.xml -->
+	<MJV_ImperialMission.questNameRules.rulesStrings>
+		<li>questName->[missionAdj] миссия</li>
+		<li>questName->Миссия [missionary_nameDef]</li>
+		<li>questName->Проповеди веры «[faithName]»</li>
+		<li>questName->Визит [missionary_nameDef]</li>
+		<li>questName->Свет [empire_name]</li>
+		<li>questName->Юстициарий веры «[faithName]»</li>
+		<li>missionAdj->Имперская</li>
+		<li>missionAdj->Священная</li>
+		<li>missionAdj->Златая</li>
+		<li>missionAdj->Благочестивая</li>
+	</MJV_ImperialMission.questNameRules.rulesStrings>
+
+	<MJV_ImperialMission.questDescriptionRules.rulesStrings>
+		<li>questDescription->[missionary_nameFull], юстициарий веры [faithName] от лица фракции [empire_name], просит разрешения остаться в [map_definite] на [missionDurationTicks_duration], чтобы приобщить ваших людей к имперской вере.\n\nПримерно раз в день [missionary_nameDef] будет просить колонию собраться на проповедь. Вы должны созвать не менее [missionAttendance] находящихся в сознании колонистов, чтобы выслушать её, либо ответить отказом. Каждая проповедь подтачивает уверенность тех, кто не разделяет [missionary_possessive] веру; те, чья уверенность будет сломлена, обратятся, а [empire_name] благосклонно отнесется к каждому новообращенному.\n\nЕсли паства окажется многочисленнее установленной нормы, это придется по нраву [missionary_objective], и [empire_name] узнает об этом по возвращении гостя. Каждая проповедь, которую вы отклоните или отмените, оскорбит юстициария и ударит по отношениям с [empire_name] после отбытия посланника. [missionRewardTerms]\n\n[missionary_nameDef] - титулованный дворянин Империи и ожидает покои, подобающие [missionary_possessive] рангу. [missionary_nameDef] отказывается выполнять физическую работу; имперский челнок доставит [missionary_objective] и заберет обратно. Если все поселенцы примут веру, [missionary_nameDef] сочтет свою задачу выполненной и улетит раньше срока.\n\nПоговаривают, что порой новообращенные покидают родные земли и уходят вслед за юстициарием в Империю.</li>
+	</MJV_ImperialMission.questDescriptionRules.rulesStrings>
+	
+	<MJV_ImperialMission_Blueprint.questNameRules.rulesStrings>
+		<li>questName->Имперское поручение</li>
+		<li>questName->Чертежи юстициариев</li>
+		<li>questName->Поручение [missionary_nameDef]</li>
+	</MJV_ImperialMission_Blueprint.questNameRules.rulesStrings>
+
+	<MJV_ImperialMission_Blueprint.questDescriptionRules.rulesStrings>
+		<li>questDescription->[missionary_nameFull], юстициарий веры [faithName] от лица фракции [empire_name], просит разрешения остаться в [map_definite] на [missionDurationTicks_duration], чтобы приобщить ваших людей к имперской вере.\n\nПримерно раз в день [missionary_nameDef] будет просить колонию собраться на проповедь. Вы должны созвать не менее [missionAttendance] находящихся в сознании колонистов, чтобы выслушать её, либо ответить отказом. Каждая проповедь подтачивает уверенность тех, кто не разделяет [missionary_possessive] веру; те, чья уверенность будет сломлена, обратятся, а [empire_name] благосклонно отнесется к каждому новообращенному.\n\nЕсли паства окажется многочисленнее установленной нормы, это придется по нраву [missionary_objective], и [empire_name] узнает об этом по возвращении гостя. Каждая проповедь, которую вы отклоните или отмените, оскорбит юстициария и ударит по отношениям с [empire_name] после отбытия посланника. [missionRewardTerms]\n\n[missionary_nameDef] - титулованный дворянин Империи и ожидает покои, подобающие [missionary_possessive] рангу. [missionary_nameDef] отказывается выполнять физическую работу; имперский челнок доставит [missionary_objective] и заберет обратно. Если все поселенцы примут веру, [missionary_nameDef] сочтет свою задачу выполненной и улетит раньше срока.\n\nПоговаривают, что порой новообращенные покидают родные земли и уходят вслед за юстициарием в Империю.</li>
+	</MJV_ImperialMission_Blueprint.questDescriptionRules.rulesStrings>
+	
+	<MJV_ImperialMission_Worker.root.nodes.Letter.label.slateRef>Прибытие юстициария: [missionary_nameDef]</MJV_ImperialMission_Worker.root.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.Letter.text.slateRef>[missionary_nameDef], юстициарий веры [faithName], прибывает на имперском челноке. [missionary_nameDef] останется у вас на [missionDurationTicks_duration] и примерно раз в день будет просить провести проповедь.\n\nКогда [missionary_nameDef] обратится с просьбой, выберите слушателей: не менее [missionAttendance] дееспособных колонистов. Сбор большей паствы порадует [missionary_objective], отказ же оскорбит юстициария. Те, кто не разделяет [missionary_possessive] веру, могут обратиться.</MJV_ImperialMission_Worker.root.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.ShuttleDelay.node.nodes.InspectString.inspectString.slateRef>Должен улететь на челноке</MJV_ImperialMission_Worker.root.nodes.ShuttleDelay.node.nodes.InspectString.inspectString.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.ShuttleDelay.node.nodes.Letter.label.slateRef>Челнок прибыл</MJV_ImperialMission_Worker.root.nodes.ShuttleDelay.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.ShuttleDelay.node.nodes.Letter.text.slateRef>Имперский челнок прибыл, чтобы забрать [missionary_nameDef]. Убедитесь, что [missionary_objective] погрузили на борт до того, как челнок улетит через [shuttleLeaveDelayTicks_duration].</MJV_ImperialMission_Worker.root.nodes.ShuttleDelay.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.lodgersDestroyed.node.nodes.Letter.label.slateRef>Гибель юстициария: {SUBJECT_definite}</MJV_ImperialMission_Worker.root.nodes.lodgersDestroyed.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.lodgersDestroyed.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которого вы согласились принять, погибает. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 10.</MJV_ImperialMission_Worker.root.nodes.lodgersDestroyed.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.lodgersArrested.node.nodes.Letter.label.slateRef>Юстициарий схвачен: {SUBJECT_definite}</MJV_ImperialMission_Worker.root.nodes.lodgersArrested.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.lodgersArrested.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которого вы согласились принять, был арестован. Вы провалили задание «[resolvedQuestName]».</MJV_ImperialMission_Worker.root.nodes.lodgersArrested.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.label.slateRef>Запрещенная операция: {SUBJECT_definite}</MJV_ImperialMission_Worker.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.text.slateRef>В отношении {SUBJECT_definite} была проведена недопустимая операция. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_ImperialMission_Worker.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.label.slateRef>Ксеногерм поглощен: {SUBJECT_definite}</MJV_ImperialMission_Worker.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.text.slateRef>Ксеногерм {SUBJECT_definite}, юстициария, которого вы согласились принять, был насильственно поглощен. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_ImperialMission_Worker.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.AnySignal-0.node.nodes.Letter.label.slateRef>Юстициарий потерян: {SUBJECT_definite}</MJV_ImperialMission_Worker.root.nodes.AnySignal-0.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.AnySignal-0.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которого вы согласились принять, пропал. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_ImperialMission_Worker.root.nodes.AnySignal-0.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.AnySignal-1.node.node.nodes.Letter.label.slateRef>Юстициарий потерян: {SUBJECT_definite}</MJV_ImperialMission_Worker.root.nodes.AnySignal-1.node.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.AnySignal-1.node.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которого вы согласились принять, присоединился к другой фракции. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_ImperialMission_Worker.root.nodes.AnySignal-1.node.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.label.slateRef>Задание провалено: [resolvedQuestName]</MJV_ImperialMission_Worker.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.text.slateRef>Фракция [empire_name] теперь враждебна к вам. Вы провалили задание «[resolvedQuestName]».</MJV_ImperialMission_Worker.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.label.slateRef>Челнок уничтожен</MJV_ImperialMission_Worker.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.text.slateRef>Челнок, отправленный за [missionary_nameDef], был уничтожен. Теперь [missionary_nameDef] уйдет пешком. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_ImperialMission_Worker.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.label.slateRef>Челнок улетел</MJV_ImperialMission_Worker.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.text.slateRef>Челнок, отправленный за [missionary_nameDef], улетел без пассажира. Теперь [missionary_nameDef] уйдет пешком.</MJV_ImperialMission_Worker.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.MissionRequirementsFailed.node.nodes.Letter.label.slateRef>Поручение не выполнено: [resolvedQuestName]</MJV_ImperialMission_Worker.root.nodes.MissionRequirementsFailed.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.MissionRequirementsFailed.node.nodes.Letter.text.slateRef>[missionary_nameDef] благополучно возвращается домой, но ваше поселение не выполнило условия поручения. Обещанный чертёж не будет отправлен.\n\n[missionRewardTerms]</MJV_ImperialMission_Worker.root.nodes.MissionRequirementsFailed.node.nodes.Letter.text.slateRef>
+
+	<MJV_ImperialMission_Worker.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.label.slateRef>Задание провалено: [resolvedQuestName]</MJV_ImperialMission_Worker.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.label.slateRef>
+	<MJV_ImperialMission_Worker.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.text.slateRef>Челнок, отправленный за [missionary_nameDef], улетел без [missionary_objective]. Теперь [missionary_nameDef] уйдет пешком. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_ImperialMission_Worker.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.text.slateRef>
+</LanguageData>

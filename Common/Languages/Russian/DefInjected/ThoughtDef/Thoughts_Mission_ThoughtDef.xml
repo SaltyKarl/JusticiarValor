@@ -1,0 +1,21 @@
+<LanguageData>
+	<!-- Common\Defs\ThoughtDefs\Thoughts_Mission.xml -->
+	<!--                                EN: inspiring sermon -->
+	<MJV_HeardImperialSermon.stages.0.label>вдохновляющая проповедь</MJV_HeardImperialSermon.stages.0.label>
+	<!--                                      EN: The justiciar spoke of our faith with such conviction. I feel uplifted. -->
+	<MJV_HeardImperialSermon.stages.0.description>Юстициарий говорил о нашей вере с такой убеждённостью, что на душе стало светлее.</MJV_HeardImperialSermon.stages.0.description>
+	<!--                                EN: heard an imperial sermon -->
+	<MJV_HeardImperialSermon.stages.1.label>услышана имперская проповедь</MJV_HeardImperialSermon.stages.1.label>
+	<!--                                      EN: A justiciar preached the Empire's faith to us. Strange ideas, but well spoken, and they gave me a lot to think about. -->
+	<MJV_HeardImperialSermon.stages.1.description>Юстициарий проповедовал нам веру Империи. Странные идеи, но сказано хорошо, и мне есть над чем подумать.</MJV_HeardImperialSermon.stages.1.description>
+	
+	<!--                               EN: sermon well attended -->
+	<MJV_SermonWellAttended.stages.0.label>проповедь собрала много слушателей</MJV_SermonWellAttended.stages.0.label>
+	<!--                                     EN: More of the colony gathered to hear me than I asked for. The Empire's word takes root here. -->
+	<MJV_SermonWellAttended.stages.0.description>Послушать меня собралось больше колонистов, чем требовалось. Слово Империи пускает здесь корни.</MJV_SermonWellAttended.stages.0.description>
+	
+	<!--                          EN: sermon refused -->
+	<MJV_SermonRefused.stages.0.label>проповедь отвергнута</MJV_SermonRefused.stages.0.label>
+	<!--                                EN: They would not gather to hear the word of the Empire. Such insolence will not go unreported. -->
+	<MJV_SermonRefused.stages.0.description>Они не пожелали собраться и выслушать слово Империи. О такой дерзости будет доложено.</MJV_SermonRefused.stages.0.description>
+</LanguageData>

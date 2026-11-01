@@ -1,0 +1,17 @@
+<LanguageData>
+	<!-- Common\Defs\AbilityDefs\Abilities_Justiciar.xml -->
+	<!--                  EN: Justiciar Valor -->
+	<MJV_JusticiarValor.label>Доблесть юстициария</MJV_JusticiarValor.label>
+	<!--                        EN: Channel an extra charge through the helmet's eltex until it resonates and releases a psychic wave around the wearer. The wave throws everyone nearby back, allies included, damages them and leaves them dazed. Those it throws are stunned for a few seconds where they land.\n\nThe wearer of the Promachos helmet cannot be arrested while conscious: an attempt triggers Justiciar Valor at once, and the wearer takes it as an attack. -->
+	<MJV_JusticiarValor.description>Направляет дополнительный заряд через эльтекс шлема, пока тот не войдёт в резонанс и не выпустит вокруг владельца психическую волну. Волна отбрасывает всех поблизости, включая союзников, наносит им урон и ошеломляет. Отброшенные существа оглушаются на несколько секунд там, где приземлились.\n\nНосителя шлема «Промахос» нельзя арестовать, пока он в сознании: попытка ареста мгновенно активирует «Доблесть юстициария», и носитель воспринимает её как нападение.</MJV_JusticiarValor.description>
+	
+	<!--            EN: Invictus -->
+	<MJV_Invictus.label>Непокорённый</MJV_Invictus.label>
+	<!--                  EN: Release the energy the psychic shield has stored from the hits it absorbed. The shield is refilled and overcharged, and the armor's servos are overdriven: the wearer moves and strikes at a blinding pace for several seconds, leaving afterimages in their wake. The more energy is stored, the longer it lasts. -->
+	<MJV_Invictus.description>Высвобождает энергию, накопленную психическим щитом от поглощённых ударов. Щит восполняется и перезаряжается сверх нормы, а сервоприводы брони разгоняются: на несколько секунд носитель двигается и бьёт с ослепительной скоростью, оставляя за собой остаточные образы. Чем больше накоплено энергии, тем дольше длится эффект.</MJV_Invictus.description>
+	
+	<!--                   EN: Celestial Pierce -->
+	<MJV_CelestialPierce.label>Небесное пронзание</MJV_CelestialPierce.label>
+	<!--                         EN: Conjure a spectral copy of the psyblade that rises into the air and slams down on a spot. The ground breaks where it lands, impaling everyone standing around it. -->
+	<MJV_CelestialPierce.description>Создаёт призрачную копию пси-клинка, которая взмывает в воздух и обрушивается на выбранную точку. Земля раскалывается в месте падения, пронзая всех, кто стоит поблизости.</MJV_CelestialPierce.description>
+</LanguageData>

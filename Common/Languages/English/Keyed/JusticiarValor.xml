@@ -115,10 +115,10 @@
 	<MJV_CalledToServiceLeftText>{PAWN_nameDef} has left with {PREACHER_nameDef} on the imperial shuttle to serve the Empire.</MJV_CalledToServiceLeftText>
 
 	<!-- Mission rewards: native equipment/techprints and the visiting justiciar's choice of gift -->
-	<MJV_GearMissionTerms>Return the justiciar safely to receive the displayed piece of justiciar equipment. No codex-auspex is included.</MJV_GearMissionTerms>
-	<MJV_BlueprintMissionTerms>To earn the displayed justiciar gear techprint, complete at least {SERMONS} sermons, with at least {ATTENDANCE} of your eligible colonists attending each one. Refuse or cancel none, and keep the justiciar's mood at {MOOD} or higher on average over the stay. Converting the whole colony early satisfies the sermon-count requirement; the other conditions still apply. This techprint replaces the equipment gift.</MJV_BlueprintMissionTerms>
+	<MJV_GearMissionTerms>Return the justiciar safely to receive the piece of justiciar equipment.</MJV_GearMissionTerms>
+	<MJV_BlueprintMissionTerms>To earn the justiciar gear techprint, complete at least {SERMONS} sermons, with at least {ATTENDANCE} of your eligible colonists attending each one. Refuse or cancel none, and keep the justiciar's mood at {MOOD} or higher on average over the stay. Converting the whole colony early satisfies the sermon-count requirement; the other conditions still apply.</MJV_BlueprintMissionTerms>
 	<MJV_BlueprintMissionProgress>Commission progress:\nQualifying sermons: {HELD} / {REQUIRED}\nAverage mood: {MOOD}\nRefused or cancelled sermons: {REFUSED}\nAttendance requirement kept: {ATTENDANCE}\nWhole colony converted: {CONVERTED}</MJV_BlueprintMissionProgress>
-	<MJV_AudienceHostFor>Host {PREACHER_objective} — gift: {GIFT}</MJV_AudienceHostFor>
+	<MJV_AudienceHostFor>Host {PREACHER_objective} - gift: {GIFT}</MJV_AudienceHostFor>
 	<MJV_MissionSettledGift>Pleased with your colony's hospitality, {JUSTICIAR_nameDef} has sent your chosen gift: {GIFT}. It is on its way by drop pod.</MJV_MissionSettledGift>
 	<MJV_MissionSettledNoGift>{JUSTICIAR_nameDef} was not content enough to send the promised gift. It requires at least one completed sermon, no refusals, and an average mood of {MOOD} or higher.</MJV_MissionSettledNoGift>
 </LanguageData>
