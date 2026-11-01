@@ -1,0 +1,11 @@
+<LanguageData>
+	<!-- Common\Defs\HistoryEventDefs\HistoryEvents_Mission.xml -->
+	<!--                            EN: colonists converted to the imperial faith -->
+	<MJV_ConvertedToImperialFaith.label>колонисты обращены в имперскую веру</MJV_ConvertedToImperialFaith.label>
+	<!--                       EN: sermons well attended -->
+	<MJV_SermonsWellAttended.label>проповеди хорошо посещаются</MJV_SermonsWellAttended.label>
+	<!--                  EN: sermons refused -->
+	<MJV_SermonsRefused.label>проповеди отвергнуты</MJV_SermonsRefused.label>
+	<!--                       EN: justiciar turned away -->
+	<MJV_JusticiarTurnedAway.label>юстициарию отказано в приёме</MJV_JusticiarTurnedAway.label>
+</LanguageData>

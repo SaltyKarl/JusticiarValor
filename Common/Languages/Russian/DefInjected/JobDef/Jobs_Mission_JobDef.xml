@@ -1,0 +1,7 @@
+<LanguageData>
+	<!-- Common\Defs\JobDefs\Jobs_Mission.xml -->
+	<!--                       EN: preaching the imperial faith. -->
+	<MJV_PreachSermon.reportString>проповедует имперскую веру.</MJV_PreachSermon.reportString>
+	<!--                          EN: going to talk to TargetA. -->
+	<MJV_TalkToJusticiar.reportString>идёт поговорить с TargetA.</MJV_TalkToJusticiar.reportString>
+</LanguageData>

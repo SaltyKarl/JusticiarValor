@@ -35,8 +35,8 @@
 		<costList>
 			<ComponentSpacer>5</ComponentSpacer>
 			<Plasteel>180</Plasteel>
-			<Steel>30</Steel>
-			<Uranium>25</Uranium>
+			<Steel>40</Steel>
+			<Uranium>35</Uranium>
 			<VPE_Eltex MayRequire="VanillaExpanded.VPsycastsE">6</VPE_Eltex>
 		</costList>
 		<equippedStatOffsets>
@@ -70,6 +70,8 @@
 				<li>Shell</li>
 			</layers>
 			<tags>
+				<li>PrestigeCombatGear</li>
+				<li>Psychic</li>
 				<li>RoyalTier7</li>
 				<li>MJV_JusticiarGear</li>
 			</tags>
@@ -184,7 +186,7 @@
 		</statBases>
 		<costList>
 			<ComponentSpacer>3</ComponentSpacer>
-			<Plasteel>90</Plasteel>
+			<Plasteel>80</Plasteel>
 			<VPE_Eltex MayRequire="VanillaExpanded.VPsycastsE">8</VPE_Eltex>
 		</costList>
 		<equippedStatOffsets>
@@ -213,8 +215,9 @@
 				<li>Overhead</li>
 			</layers>
 			<tags>
+				<li>PrestigeCombatGear</li>
+				<li>Psychic</li>
 				<li>RoyalTier7</li>
-				<li>APM_Mechamancer</li>
 				<li>MJV_JusticiarGear</li>
 			</tags>
 			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/PromachosHelmet/PromachosHelmet</wornGraphicPath>

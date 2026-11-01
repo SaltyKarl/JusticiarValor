@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+	<!-- Promachos helmet -->
+	<MJV_ArrestRefused>Шлем Промахос не позволит пленить {PAWN_nameDef}: Доблесть Юстициара!</MJV_ArrestRefused>
+
+	<!-- Promachos armor -->
+	<MJV_ShieldEnergy>{0} / {1}</MJV_ShieldEnergy>
+	<MJV_ShieldResetting>Перезагрузка</MJV_ShieldResetting>
+	<MJV_ShieldNoSensitivity>Нет пси-чувствительности</MJV_ShieldNoSensitivity>
+	<MJV_InvictusCharge>Непокорённый {0}</MJV_InvictusCharge>
+	<MJV_InvictusChargeFading>Непокорённый {0} (угасает)</MJV_InvictusChargeFading>
+	<MJV_PromachosArmorTip>Пси-щит: поглощает выстрелы, снаряды, взрывы и удары ближнего боя. Его ёмкость зависит от пси-чувствительности носителя ({0}): {1} ед. энергии за каждые 100%. Щит начинает восстанавливаться спустя несколько секунд после последнего попадания и перезагружается через некоторое время после полного истощения.\n\nНепокорённый: каждое поглощенное попадание накапливает энергию для способности «Непокорённый». Накопленный заряд начинает рассеиваться, если носитель не получает урона в течение {2} с.</MJV_PromachosArmorTip>
+	<MJV_InvictusNoArmor>Требуется пси-щит брони Промахос</MJV_InvictusNoArmor>
+	<MJV_InvictusNotCharged>Недостаточно накопленной энергии ({0}, требуется {1}). Пси-щит накапливает энергию от поглощаемых ударов.</MJV_InvictusNotCharged>
+
+	<!-- Energy psyspear -->
+	<MJV_PsyOrbToggle>Пси-сферы</MJV_PsyOrbToggle>
+	<MJV_PsyOrbToggleDesc>В активном состоянии энергетическое пси-копьё синтезирует пси-сферы (одну каждые пять секунд, максимум до трёх) и удерживает их внутри. В бою или режиме призыва сферы выходят наружу, окружают владельца и самостоятельно атакуют ближайших врагов. Каждая сфера наносит термический ожог и на несколько секунд замедляет цель.\n\nГотово сфер: {0} / {1}</MJV_PsyOrbToggleDesc>
+
+	<!-- Energy psyblade -->
+	<MJV_PierceHitsAllies>Союзников в области поражения: {0}</MJV_PierceHitsAllies>
+
+	<!-- Warlockbane shield -->
+	<MJV_Deflected>Отражено</MJV_Deflected>
+	<MJV_WarlockbaneTip>Погибель варлоков: отражает направленные на владельца враждебные пси-атаки (пси-способности, психические копья, пси-импульсы) и оглушает применившего их отдачей. Каждое отражение расходует один заряд. Заряды восстанавливаются медленно.\n\nЗарядов: {0} / {1}</MJV_WarlockbaneTip>
+
+	<!-- Imperial codex-auspex -->
+	<MJV_TomeNoBlueprints>Нет незавершенных проектов, требующих имперских чертежей</MJV_TomeNoBlueprints>
+	<MJV_TomeNothingToLearn>{PAWN_nameDef} {PAWN_gender ? изучил : изучила} имперский кодекс-ауспекс, но не {PAWN_gender ? нашел : нашла} ничего полезного для текущих нужд колонии.</MJV_TomeNothingToLearn>
+	<MJV_TomeStudiedLabel>Имперский чертеж</MJV_TomeStudiedLabel>
+	<MJV_TomeStudiedText>{PAWN_nameDef} {PAWN_gender ? расшифровал : расшифровала} матрицы данных имперского кодекса-ауспекса и {PAWN_gender ? получил : получила} чертеж для проекта «{1}».\n\nПрименено чертёжов: {2} / {3}</MJV_TomeStudiedText>
+
+	<!-- Imperial missions: sermons -->
+	<MJV_ImperialFaithFallback>имперская вера</MJV_ImperialFaithFallback>
+	<MJV_SermonStarted>{PREACHER_nameDef} {PREACHER_gender ? начал : начала} проповедь веры «{FAITH}». Колонисты собираются послушать священное слово.</MJV_SermonStarted>
+	<MJV_SermonFinished>{PREACHER_nameDef} {PREACHER_gender ? завершил : завершила} проповедь. Слушателей: {COUNT}.</MJV_SermonFinished>
+	<MJV_SermonInterrupted>Проповедь, которую {PREACHER_gender ? вел : вела} {PREACHER_nameDef}, была прервана.</MJV_SermonInterrupted>
+	<MJV_SermonCancelled>Проповедь, которую {PREACHER_gender ? вел : вела} {PREACHER_nameDef}, была отменена. {PREACHER_nameDef} расценивает это как отказ.</MJV_SermonCancelled>
+	<MJV_SermonConvertsLabel>Обращение в имперскую веру</MJV_SermonConvertsLabel>
+	<MJV_SermonConvertsText>Проповедь, которую {PREACHER_gender ? читал : читала} {PREACHER_nameDef}, побудила некоторых ваших колонистов принять веру «{FAITH}»:\n\n{CONVERTS}\n\nИмперия благосклонно относится к каждому новому приверженцу веры.</MJV_SermonConvertsText>
+	<MJV_LordReportPreaching>Проповедует имперскую веру.</MJV_LordReportPreaching>
+	<MJV_LordReportListening>Слушает проповедь, которую ведет {PREACHER_nameDef}.</MJV_LordReportListening>
+	<MJV_LordReportAwaitingAnswer>Ожидает сбора колонистов на проповедь.</MJV_LordReportAwaitingAnswer>
+	<MJV_SermonNoDrafting>{PAWN_nameDef} слушает проповедь ({PREACHER_nameDef}) и не может быть {PAWN_gender ? призван : призвана} к оружию, пока поселению ничего не угрожает.</MJV_SermonNoDrafting>
+	<MJV_CommandLeaveSermon>Покинуть проповедь</MJV_CommandLeaveSermon>
+	<MJV_CommandLeaveSermonDesc>{PAWN_nameDef} покинет проповедь. Если останется меньше чем {REQUIRED} слушателей (сейчас: {LISTENING}), проповедь будет сорвана, что приравнивается к отказу.</MJV_CommandLeaveSermonDesc>
+	<MJV_CommandCancelSermon>Отменить проповедь</MJV_CommandCancelSermon>
+	<MJV_CommandCancelSermonDesc>Прервать проповедь, которую ведет {PREACHER_nameDef}. Это будет воспринято как оскорбительный отказ: -{PENALTY} к отношениям с Империей по возвращении гостя.</MJV_CommandCancelSermonDesc>
+	<MJV_ConfirmCancelSermon>Отменить проповедь, которую ведет {PREACHER_nameDef}?\n\n{PREACHER_nameDef} воспримет это как отказ, что будет стоить вам {PENALTY} очков отношений с Империей по возвращении гостя.</MJV_ConfirmCancelSermon>
+
+	<!-- Imperial missions: a sermon requested -->
+	<MJV_SermonRequestedLabel>Запрос на проповедь: {JUSTICIAR_nameDef}</MJV_SermonRequestedLabel>
+	<MJV_SermonRequestedText>{JUSTICIAR_nameDef} просит собрать колонию на проповедь веры «{FAITH}».\n\nВыберите {JUSTICIAR_nameDef} и нажмите «Провести проповедь», чтобы созвать людей: необходимо участие как минимум {REQUIRED} из {ELIGIBLE} дееспособных колонистов. Каждый слушатель сверх нормы порадует гостя: проповедь, услышанная всей колонией, принесет +{BONUS} к отношениям с Империей по возвращении гостя.\n\nВы можете отказать, однако {JUSTICIAR_nameDef} сочтет это за оскорбление (-{PENALTY} к отношениям с Империей). {JUSTICIAR_nameDef} ожидает ответа в течение {TIME}; молчание будет расценено как отказ.</MJV_SermonRequestedText>
+	<MJV_CommandHoldSermon>Провести проповедь</MJV_CommandHoldSermon>
+	<MJV_CommandHoldSermonDesc>Выбрать колонистов, которые придут на проповедь ({JUSTICIAR_nameDef}). До истечения срока ожидания осталось: {TIME}.</MJV_CommandHoldSermonDesc>
+	<MJV_CommandRefuseSermon>Отказать в проповеди</MJV_CommandRefuseSermon>
+	<MJV_CommandRefuseSermonDesc>Отклонить просьбу о проповеди ({JUSTICIAR_nameDef}). Это оскорбит гостя и приведет к потере {PENALTY} очков отношений с Империей по {JUSTICIAR_possessive} возвращении.</MJV_CommandRefuseSermonDesc>
+	<MJV_ConfirmRefuseSermon>Отклонить просьбу о проповеди ({JUSTICIAR_nameDef})?\n\n{JUSTICIAR_nameDef} сочтет это оскорблением, что снизит отношения с Империей на {PENALTY} очков по {JUSTICIAR_possessive} возвращении.</MJV_ConfirmRefuseSermon>
+	<MJV_SermonRefused>Поселение отказалось проводить проповедь ({JUSTICIAR_nameDef}). Империя узнает об этом по {JUSTICIAR_possessive} возвращении (-{PENALTY} к отношениям).</MJV_SermonRefused>
+	<MJV_SermonRequestIgnored>{JUSTICIAR_nameDef} тщетно {JUSTICIAR_gender ? ожидал : ожидала} сбора паствы и расценивает молчание как отказ (-{PENALTY} к отношениям по {JUSTICIAR_possessive} возвращении).</MJV_SermonRequestIgnored>
+	<MJV_SermonRequestLapsed>Срок запроса на проповедь ({JUSTICIAR_nameDef}) истек: поселение было не в состоянии провести службу.</MJV_SermonRequestLapsed>
+	<MJV_SermonJusticiarUnavailable>{JUSTICIAR_nameDef} не может вести проповедь прямо сейчас.</MJV_SermonJusticiarUnavailable>
+	<MJV_SermonDanger>Невозможно во время опасности для поселения.</MJV_SermonDanger>
+	<MJV_SermonOtherGathering>В поселении уже проходит другое собрание или ритуал.</MJV_SermonOtherGathering>
+	<MJV_SermonNobodyToListen>Ни один колонист не может присутствовать на службе.</MJV_SermonNobodyToListen>
+	<MJV_AlertSermonRequested>Запрос на проповедь</MJV_AlertSermonRequested>
+	<MJV_AlertSermonRequestedDesc>Юстициарий ожидает, пока колония соберется на проповедь. Выберите юстициария, чтобы созвать людей или ответить отказом. Оставленный без ответа запрос приравнивается к отказу.\n\n{0}</MJV_AlertSermonRequestedDesc>
+
+	<!-- Imperial missions: the sermon's ritual window -->
+	<MJV_SermonRitualLabel>Проповедь веры «{0}»</MJV_SermonRitualLabel>
+	<MJV_SermonBegin>Начать проповедь</MJV_SermonBegin>
+	<MJV_SermonDialogDesc>{JUSTICIAR_nameDef} будет проповедовать веру «{FAITH}». Для проведения требуется как минимум {REQUIRED} из {ELIGIBLE} дееспособных колонистов. Участники не могут быть мобилизованы, пока поселению не угрожает прямая опасность. Каждый слушатель, чья уверенность будет сломлена, примет имперскую веру.</MJV_SermonDialogDesc>
+	<MJV_SermonDialogRules>Каждый слушатель сверх минимального порога радует гостя ({JUSTICIAR_nameDef}): проповедь при участии всей колонии приносит +{BONUS} к отношениям с Империей по возвращении юстициария. Отмена службы или удаление участников до количества ниже минимума считается отказом: -{PENALTY} к отношениям по возвращении гостя.</MJV_SermonDialogRules>
+	<MJV_SermonAttendanceLabel>Посещаемость</MJV_SermonAttendanceLabel>
+	<MJV_SermonSatisfactionLabel>Удовлетворенность ({JUSTICIAR_nameDef})</MJV_SermonSatisfactionLabel>
+	<MJV_SermonNeedsCongregation>Требуется не менее {0} из {1} дееспособных колонистов (выбрано: {2}).</MJV_SermonNeedsCongregation>
+	<MJV_SermonCongregationFactor>Паства</MJV_SermonCongregationFactor>
+	<MJV_SermonBelowMinimum>требуется {0}</MJV_SermonBelowMinimum>
+	<MJV_SermonTurnoutBonus>+{0} к отношениям</MJV_SermonTurnoutBonus>
+	<MJV_SermonCongregationTip>Юстициарий требует собрать как минимум {0} из {1} дееспособных колонистов. Каждый дополнительный слушатель повышает удовлетворенность гостя. Этот показатель отражает долю колонии сверх минимума, посетившую службу, определяя итоговый бонус к отношениям с Империей по возвращении посланника.</MJV_SermonCongregationTip>
+
+	<!-- Imperial missions: the visiting justiciar -->
+	<MJV_MissionaryArrivedSolo>{PREACHER_nameFull}, юстициарий веры «{FAITH}», {PREACHER_gender ? прибыл : прибыла} из фракции {FACTION_name} с миссией приобщить ваше поселение к имперской вере.</MJV_MissionaryArrivedSolo>
+	<MJV_MissionaryArrivedEscorted>{PREACHER_nameFull}, юстициарий веры «{FAITH}», {PREACHER_gender ? прибыл : прибыла} из фракции {FACTION_name} с миссией приобщить ваше поселение к имперской вере. С {PREACHER_objective} путешествует эскорт ({COUNT} чел.).</MJV_MissionaryArrivedEscorted>
+	<MJV_MissionaryAsksAudience>{PREACHER_nameDef} просит аудиенции перед тем, как остановиться в поселении. Отправьте колониста на переговоры: выберите колониста и нажмите правой кнопкой мыши по {PREACHER_nameDef}. Посланник объяснит условия пребывания, после чего вы сможете принять гостя или прогнать прочь.\n\nЕсли отказать {PREACHER_objective} или не выйти на контакт в течение {TIME}, {PREACHER_nameDef} вернется восвояси, а {FACTION_name} сочтет это оскорблением (-{PENALTY} к отношениям).</MJV_MissionaryAsksAudience>
+	<MJV_MissionaryHosted>{PREACHER_nameDef} останется в вашем поселении на {DURATION}.</MJV_MissionaryHosted>
+	<MJV_MissionaryTurnedAway>{PREACHER_nameDef} {PREACHER_gender ? получил : получила} отказ и возвращается домой. Фракция {FACTION} оскорблена (-{PENALTY} к отношениям).</MJV_MissionaryTurnedAway>
+	<MJV_MissionaryGaveUp>Никто не пришел на переговоры с {PREACHER_nameDef}, и гость возвращается домой. Фракция {FACTION} оскорблена (-{PENALTY} к отношениям).</MJV_MissionaryGaveUp>
+	<MJV_MissionaryLeaving>{PREACHER_nameDef} {PREACHER_gender ? завершил : завершила} свою миссию и покидает поселение.</MJV_MissionaryLeaving>
+	<MJV_MissionaryLeavingConverted>Теперь вся колония исповедует веру «{FAITH}». {PREACHER_nameDef} считает свою миссию выполненной и уходит.</MJV_MissionaryLeavingConverted>
+	<MJV_MissionEscortLeaving>Оставшись без своего юстициария, эскорт из {0} возвращается домой.</MJV_MissionEscortLeaving>
+
+	<!-- Imperial missions: talking to the visiting justiciar -->
+	<MJV_LordReportAwaitingAudience>Ожидает переговоров с представителем поселения.</MJV_LordReportAwaitingAudience>
+	<MJV_TalkToJusticiar>Поговорить с {JUSTICIAR_nameDef}</MJV_TalkToJusticiar>
+	<MJV_TalkIncapable>{PAWN_nameDef} не может говорить от лица поселения</MJV_TalkIncapable>
+	<MJV_AudienceTitle>Миссия юстициария</MJV_AudienceTitle>
+	<MJV_AudienceText>{PREACHER_nameFull} приветствует {SPEAKER_nameDef}:\n\n«Я - юстициарий веры «{FAITH}», {PREACHER_gender ? направленный : направленная} фракцией {FACTION_name}, дабы принести свет истинной веры вашему народу. Я прошу приюта в ваших землях на {DURATION}.»\n\nЕсли вы примете гостя:\n  - Время от времени {PREACHER_nameDef} будет требовать собрать не менее {FRACTION} дееспособных колонистов на проповедь. Проповеди могут обратить тех, кто еще не разделяет имперскую веру.\n  - За каждого новообращенного: +{GOODWILL} к отношениям с {FACTION_name}.\n  - За каждую проповедь, собравшую больше паствы, чем требовалось: до +{BONUS} к отношениям по возвращении гостя (максимум +{MAXBONUS} за все время визита).\n  - Проведите все службы и поддерживайте настроение гостя на высоком уровне, и {PREACHER_nameDef} оставит вам в награду имперский кодекс-ауспекс.\n  - За каждую отклоненную или сорванную службу: -{PENALTY} к отношениям по возвращении гостя.\n\nЕсли прогнать гостя прочь, {FACTION_name} сочтет это оскорблением: -{DECLINE} к отношениям.</MJV_AudienceText>
+	<MJV_AudienceHost>Принять {PREACHER_nameDef}</MJV_AudienceHost>
+	<MJV_AudienceDecline>Прогнать {PREACHER_objective} (-{DECLINE} к отношениям)</MJV_AudienceDecline>
+	<MJV_AudienceLater>Мне нужно подумать (осталось {TIME})</MJV_AudienceLater>
+	<MJV_AlertJusticiarAwaitsAudience>Юстициарий ожидает переговоров</MJV_AlertJusticiarAwaitsAudience>
+	<MJV_AlertJusticiarAwaitsAudienceDesc>Прибывший юстициарий ждет, пока кто-нибудь из колонистов выйдет на переговоры. Выберите поселенца и нажмите правой кнопкой мыши по юстициарию: вы сможете принять гостя или прогнать прочь. Если никто не явится вовремя, посланник уйдет, а Империя оскорбится.\n\n{0}</MJV_AlertJusticiarAwaitsAudienceDesc>
+
+	<!-- Imperial missions: what a justiciar's mission earned and cost, when he returns to the Empire -->
+	<MJV_MissionSettledLabel>Миссия завершена: {JUSTICIAR_nameDef}</MJV_MissionSettledLabel>
+	<MJV_MissionSettledText>{JUSTICIAR_nameDef} {JUSTICIAR_gender ? вернулся : вернулась} во фракцию {FACTION_name} с отчетом о своей миссии.\n\nПроведено служб: {HELD}. За паству сверх нормы: {BONUS} к отношениям.\nОтклонено или сорвано служб: {REFUSED}. Штраф: {PENALTY} к отношениям.</MJV_MissionSettledText>
+	<MJV_MissionSettledCodex>Впечатленный гостеприимством вашей колонии, {JUSTICIAR_nameDef} оставляет вам имперский кодекс-ауспекс. Он уже отправлен транспортной капсулой.</MJV_MissionSettledCodex>
+	<MJV_MissionSettledNoCodex>{JUSTICIAR_nameDef} не {JUSTICIAR_gender ? остался : осталась} в достаточной мере {JUSTICIAR_gender ? доволен : довольна} приемом, чтобы оставить подарок. Юстициарий дарует кодекс-ауспекс лишь в том случае, если ни одна проповедь не была отвергнута, а среднее настроение держалось выше {1}.</MJV_MissionSettledNoCodex>
+
+	<!-- Imperial missions: the lodging justiciar -->
+	<MJV_MissionColonyConvertedLabel>Миссия выполнена</MJV_MissionColonyConvertedLabel>
+	<MJV_MissionColonyConvertedText>Теперь вся ваша колония следует вере «{FAITH}». {PREACHER_nameDef} считает свою задачу выполненной: имперский челнок вызван заранее, чтобы забрать гостя домой.</MJV_MissionColonyConvertedText>
+	<MJV_CalledToServiceLabel>Призыв на службу: {PAWN_nameDef}</MJV_CalledToServiceLabel>
+	<MJV_CalledToServiceText>{PAWN_nameDef} {PAWN_gender ? услышал : услышала} зов веры «{FAITH}» и {PAWN_gender ? решил : решила} отправиться вместе с {PREACHER_nameDef}, чтобы служить Империи.\n\n{PAWN_nameDef} направляется к челноку. Если вы хотите удержать колониста, вы можете арестовать {PAWN_objective}, пока {PAWN_pronoun} не {PAWN_gender ? поднялся : поднялась} на борт.</MJV_CalledToServiceText>
+	<MJV_CalledToServiceLeftLabel>Уход на службу: {PAWN_nameDef}</MJV_CalledToServiceLeftLabel>
+	<MJV_CalledToServiceLeftText>{PAWN_nameDef} {PAWN_gender ? покинул : покинула} поселение вместе с {PREACHER_nameDef} на имперском челноке, чтобы служить Империи.</MJV_CalledToServiceLeftText>
+	<!-- EN: Return the justiciar safely to receive the displayed piece of justiciar equipment. -->
+	<MJV_GearMissionTerms>Обеспечьте безопасность юстициария, чтобы получить указанный элемент снаряжения.</MJV_GearMissionTerms>
+
+	<!-- EN: To earn the displayed justiciar gear techprint, complete at least {SERMONS} sermons, with at least {ATTENDANCE} of your eligible colonists attending each one. Refuse or cancel none, and keep the justiciar's mood at {MOOD} or higher on average over the stay. Converting the whole colony early satisfies the sermon-count requirement; the other conditions still apply. -->
+	<MJV_BlueprintMissionTerms>Чтобы получить чертёж юстициариев, проведите не менее {SERMONS} проповедей, собирая на каждую не менее {ATTENDANCE} подходящих колонистов. Не отклоняйте и не отменяйте службы, а также поддерживайте настроение юстициария на среднем уровне не ниже {MOOD}. Полное обращение колонии досрочно закрывает требование по числу проповедей (остальные условия сохраняются).</MJV_BlueprintMissionTerms>
+
+	<!-- EN: Commission progress:\nQualifying sermons: {HELD} / {REQUIRED}\nAverage mood: {MOOD}\nRefused or cancelled sermons: {REFUSED}\nAttendance requirement kept: {ATTENDANCE}\nWhole colony converted: {CONVERTED} -->
+	<MJV_BlueprintMissionProgress>Прогресс поручения:\nПодходящих проповедей: {HELD} / {REQUIRED}\nСреднее настроение: {MOOD}\nОтклонено или сорвано служб: {REFUSED}\nНорма посещаемости соблюдена: {ATTENDANCE}\nВся колония обращена: {CONVERTED}</MJV_BlueprintMissionProgress>
+
+	<!-- EN: Host {PREACHER_objective} - gift: {GIFT} -->
+	<MJV_AudienceHostFor>Принять {PREACHER_objective} - дар: {GIFT}</MJV_AudienceHostFor>
+
+	<!-- EN: Pleased with your colony's hospitality, {JUSTICIAR_nameDef} has sent your chosen gift: {GIFT}. It is on its way by drop pod. -->
+	<MJV_MissionSettledGift>Впечатленный гостеприимством вашей колонии, {JUSTICIAR_nameDef} отправляет выбранную вами награду: {GIFT}. Она уже летит в транспортной капсуле.</MJV_MissionSettledGift>
+
+	<!-- EN: {JUSTICIAR_nameDef} was not content enough to send the promised gift. It requires at least one completed sermon, no refusals, and an average mood of {MOOD} or higher. -->
+	<MJV_MissionSettledNoGift>{JUSTICIAR_nameDef} не был в достаточной степени удовлетворен приемом, чтобы отправить обещанный подарок. Для получения награды требуется провести как минимум одну службу, не иметь отказов и удерживать среднее настроение гостя на уровне {MOOD} или выше.</MJV_MissionSettledNoGift>
+
+</LanguageData>

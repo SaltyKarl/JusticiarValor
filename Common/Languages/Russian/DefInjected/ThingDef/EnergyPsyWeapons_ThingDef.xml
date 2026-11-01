@@ -1,0 +1,27 @@
+<LanguageData>
+	<!-- Common\Defs\ThingDefs_Misc\Weapons\EnergyPsyWeapons.xml -->
+	<!--                         EN: energy psy-spear -->
+	<MJV_Weapon_EnergyPsySpear.label>энергетическое пси-копьё</MJV_Weapon_EnergyPsySpear.label>
+	<!--                               EN: An advanced ultra-tech polearm forged around a core of refined eltex. Engineered to pierce through heavy plating, the spear channels high-frequency psychic vibration with every thrust. An autonomous sub-core continually condenses residual psychic energy into dense orbs, automatically discharging them like a micro-turret at approaching hostiles to deal concussive damage and heavily impede their movement. -->
+	<MJV_Weapon_EnergyPsySpear.description>Совершенное ультратехнологичное древковое оружие, выкованное вокруг ядра из очищенного эльтекса. Созданное для пробивания тяжёлой брони, копьё с каждым выпадом направляет высокочастотную психическую вибрацию. Автономное подъядро непрерывно конденсирует остаточную психическую энергию в плотные сферы и автоматически выпускает их, как микротурель, по приближающимся врагам, нанося ударный урон и сильно замедляя их движение.</MJV_Weapon_EnergyPsySpear.description>
+	<!--                                 EN: рукоять -->
+	<MJV_Weapon_EnergyPsySpear.tools.0.label>рукоять</MJV_Weapon_EnergyPsySpear.tools.0.label>
+	<!--                                 EN: острие -->
+	<MJV_Weapon_EnergyPsySpear.tools.1.label>острие</MJV_Weapon_EnergyPsySpear.tools.1.label>
+	<!--                                 EN: кромка -->
+	<MJV_Weapon_EnergyPsySpear.tools.2.label>кромка</MJV_Weapon_EnergyPsySpear.tools.2.label>
+	
+	<!--                     EN: psy-orb -->
+	<MJV_Projectile_PsyOrb.label>пси-сфера</MJV_Projectile_PsyOrb.label>
+	
+	<!--                              EN: energy psy-blade -->
+	<MJV_MeleeWeapon_EnergyPsyblade.label>энергетический пси-клинок</MJV_MeleeWeapon_EnergyPsyblade.label>
+	<!--                                    EN: An agile ultra-tech sword forged around an active eltex core. The blade resonates with high-frequency psychic vibrations, dealing solid cutting damage with balanced, moderate armor penetration.\n\nThrough mental projection, the wielder can invoke Celestial Pierce - condensing raw psychic force into a spectral blade that descends from the heavens up to three cells away, impaling everyone around the spot where it lands. -->
+	<MJV_MeleeWeapon_EnergyPsyblade.description>Манёвренный ультратехнологичный меч, выкованный вокруг активного эльтексового ядра. Клинок резонирует с высокочастотными психическими вибрациями, нанося весомый режущий урон при умеренном, сбалансированном бронебойном эффекте.\n\nС помощью мысленной проекции владелец может призвать «Небесное пронзание» - сгусток чистой психической силы превращается в призрачный клинок, который падает с небес на расстоянии до трёх клеток и пронзает всех вокруг точки приземления.</MJV_MeleeWeapon_EnergyPsyblade.description>
+	<!--                                      EN: рукоять -->
+	<MJV_MeleeWeapon_EnergyPsyblade.tools.0.label>рукоять</MJV_MeleeWeapon_EnergyPsyblade.tools.0.label>
+	<!--                                      EN: острие -->
+	<MJV_MeleeWeapon_EnergyPsyblade.tools.1.label>острие</MJV_MeleeWeapon_EnergyPsyblade.tools.1.label>
+	<!--                                      EN: кромка -->
+	<MJV_MeleeWeapon_EnergyPsyblade.tools.2.label>лезвие</MJV_MeleeWeapon_EnergyPsyblade.tools.2.label>
+</LanguageData>

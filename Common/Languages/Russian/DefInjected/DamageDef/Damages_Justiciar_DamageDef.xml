@@ -1,0 +1,12 @@
+<LanguageData>
+	<!-- Common\Defs\DamageDefs\Damages_Justiciar.xml -->
+	<!--                     EN: psychic concussion -->
+	<MJV_PsychicConcussion.label>психическое сотрясение</MJV_PsychicConcussion.label>
+	<!--                            EN: {0} was crushed by a psychic wave. -->
+	<MJV_PsychicConcussion.deathMessage>Психическая волна раздавила {0}.</MJV_PsychicConcussion.deathMessage>
+	
+	<!--           EN: psy-burn -->
+	<MJV_PsyBurn.label>пси-ожог</MJV_PsyBurn.label>
+	<!--                  EN: {0} was seared by a psy-orb. -->
+	<MJV_PsyBurn.deathMessage>Пси-сфера опалила {0}.</MJV_PsyBurn.deathMessage>
+</LanguageData>

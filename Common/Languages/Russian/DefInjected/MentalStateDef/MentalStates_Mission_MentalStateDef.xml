@@ -1,0 +1,9 @@
+<LanguageData>
+	<!-- Common\Defs\MentalStateDefs\MentalStates_Mission.xml -->
+	<!--                   EN: called to imperial service -->
+	<MJV_CalledToService.label>призыв на имперскую службу</MJV_CalledToService.label>
+	<!--                             EN: {0} has decided to stay with the colony after all. -->
+	<MJV_CalledToService.recoveryMessage>{0} в итоге остаётся в колонии.</MJV_CalledToService.recoveryMessage>
+	<!--                             EN: Mental state: Called to imperial service -->
+	<MJV_CalledToService.baseInspectLine>Психическое состояние: призыв на имперскую службу</MJV_CalledToService.baseInspectLine>
+</LanguageData>
