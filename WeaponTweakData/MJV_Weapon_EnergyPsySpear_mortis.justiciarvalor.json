@@ -1,0 +1,13 @@
+{
+  "TextureModID": "mortis.justiciarvalor",
+  "ItemDefName": "MJV_Weapon_EnergyPsySpear",
+  "ItemType": "ThingDef",
+  "ItemTypeNamespace": "Verse",
+  "OffX": 0.128,
+  "Rotation": 90.0,
+  "ScaleX": 1.75,
+  "ScaleY": 1.75,
+  "BladeStart": 0.544,
+  "BladeEnd": 0.968,
+  "MeleeWeaponType": 4
+}

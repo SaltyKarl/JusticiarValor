@@ -1,0 +1,12 @@
+{
+  "TextureModID": "mortis.justiciarvalor",
+  "ItemDefName": "MJV_MeleeWeapon_EnergyPsyblade",
+  "ItemType": "ThingDef",
+  "ItemTypeNamespace": "Verse",
+  "OffX": 0.3445693,
+  "Rotation": 90.0,
+  "HandsMode": 1,
+  "BladeStart": 0.127340823,
+  "BladeEnd": 0.8164794,
+  "MeleeWeaponType": 16
+}

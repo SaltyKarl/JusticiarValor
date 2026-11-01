@@ -17,5 +17,7 @@
     <exclude>Justiciar Valor (中文).docx</exclude>
     <exclude>RELEASE.md</exclude>
     <exclude>_PublisherPlus.xml</exclude>
+    <exclude>1.6\Source</exclude>
+    <exclude>1.7\Source</exclude>
   </Excluded>
 </Configuration>
