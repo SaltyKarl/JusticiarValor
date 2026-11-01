@@ -137,6 +137,8 @@ namespace JusticiarValor
         public SlateRef<IntRange> firstSermonDelayTicks;
         public SlateRef<float> callChance;
         public SlateRef<Thing> shuttle;
+        public SlateRef<bool> blueprintMission;
+        public SlateRef<bool> suppressCodex;
 
         // How he preaches, what he asks of the colony and what it earns or costs with the Empire.
         public SermonSettings sermon = new SermonSettings();
@@ -146,6 +148,12 @@ namespace JusticiarValor
 
         [NoTranslate]
         public SlateRef<string> outSignalColonyConverted;
+
+        [NoTranslate]
+        public SlateRef<string> outSignalMissionSucceeded;
+
+        [NoTranslate]
+        public SlateRef<string> outSignalMissionFailed;
 
         protected override bool TestRunInt(Slate slate) => slate.Get<Map>("map") != null;
 
@@ -161,12 +169,22 @@ namespace JusticiarValor
                 firstSermonDelayTicks = firstSermonDelayTicks.GetValue(slate),
                 callChance = callChance.GetValue(slate),
                 shuttle = shuttle.GetValue(slate),
+                blueprintMission = blueprintMission.GetValue(slate),
+                suppressCodex = suppressCodex.GetValue(slate),
                 settings = sermon?.Copy() ?? new SermonSettings(),
                 inSignalShuttleArrived = QuestGenUtility.HardcodedSignalWithQuestID(inSignalShuttleArrived.GetValue(slate)),
                 inSignalShuttleSent = QuestGenUtility.HardcodedSignalWithQuestID("pickupShipThing.SentSatisfied"),
                 inSignalShuttleSentUnsatisfied = QuestGenUtility.HardcodedSignalWithQuestID("pickupShipThing.SentUnsatisfied"),
-                outSignalColonyConverted = QuestGenUtility.HardcodedSignalWithQuestID(outSignalColonyConverted.GetValue(slate))
+                outSignalColonyConverted = QuestGenUtility.HardcodedSignalWithQuestID(outSignalColonyConverted.GetValue(slate)),
+                outSignalMissionSucceeded = QuestGenUtility.HardcodedSignalWithQuestID(outSignalMissionSucceeded.GetValue(slate)),
+                outSignalMissionFailed = QuestGenUtility.HardcodedSignalWithQuestID(outSignalMissionFailed.GetValue(slate))
             };
+            if (part.blueprintMission)
+            {
+                part.settings.requiredFraction = MissionRewards.BlueprintAttendance;
+                part.settings.codexMinMood = MissionRewards.BlueprintMood;
+                part.requiredSermons = MissionRewards.BlueprintSermons;
+            }
             QuestGen.quest.AddPart(part);
         }
     }
@@ -189,6 +207,12 @@ namespace JusticiarValor
         public string inSignalShuttleSent;
         public string inSignalShuttleSentUnsatisfied;
         public string outSignalColonyConverted;
+        public string outSignalMissionSucceeded;
+        public string outSignalMissionFailed;
+        public bool blueprintMission;
+        // Missing in old saves: their already-promised codex and original completion signals remain intact.
+        public bool suppressCodex;
+        public int requiredSermons;
 
         private int nextSermonTick = -1;
         private bool departing;
@@ -199,6 +223,19 @@ namespace JusticiarValor
         private SermonRequest request;
         private MissionRecord record = new MissionRecord();
         private int nextMoodSampleTick;
+        private int qualifyingSermons;
+        private bool poorAttendance;
+
+        public int QualifyingSermons => qualifyingSermons;
+
+        public bool BlueprintRequirementsMet => !blueprintMission || record.refusals == 0 && !poorAttendance
+            && record.AverageMood >= settings.codexMinMood && (qualifyingSermons >= requiredSermons || colonyConverted);
+
+        public override string DescriptionPart => !blueprintMission || State != QuestPartState.Enabled ? null
+            : (string)"MJV_BlueprintMissionProgress".Translate(qualifyingSermons.Named("HELD"), requiredSermons.Named("REQUIRED"),
+                (record.AverageMood < 0f ? "-" : record.AverageMood.ToStringPercent()).Named("MOOD"), record.refusals.Named("REFUSED"),
+                (colonyConverted ? "Yes".Translate() : "No".Translate()).Named("CONVERTED"),
+                (poorAttendance ? "No".Translate() : "Yes".Translate()).Named("ATTENDANCE"));
 
         public Pawn Called => called;
 
@@ -324,6 +361,17 @@ namespace JusticiarValor
             if (result.outcome == SermonOutcome.Held)
             {
                 record.RecordSermon(preacher, settings, result.turnout);
+                if (blueprintMission)
+                {
+                    if (result.eligible > 0 && result.attendees >= SermonRequests.Required(result.eligible, settings.requiredFraction))
+                    {
+                        qualifyingSermons++;
+                    }
+                    else
+                    {
+                        poorAttendance = true;
+                    }
+                }
             }
             else if (result.outcome == SermonOutcome.Cancelled)
             {
@@ -363,8 +411,21 @@ namespace JusticiarValor
             }
             else if (signal.tag == inSignalShuttleSent)
             {
+                if (record.Settled || quest.State != QuestState.Ongoing)
+                {
+                    return;
+                }
                 CompleteCalling();
-                record.Settle(preacher, settings, mapParent?.Map);
+                // Conversion through other means also fulfils the colony-wide objective. Only the sermon count is
+                // waived; mood, attendance and refusals still matter.
+                colonyConverted |= mapParent?.Map != null && ImperialFaith.ColonyConverted(mapParent.Map);
+                bool success = BlueprintRequirementsMet;
+                record.Settle(preacher, settings, mapParent?.Map, giveCodex: !suppressCodex);
+                string completionSignal = success ? outSignalMissionSucceeded : outSignalMissionFailed;
+                if (!completionSignal.NullOrEmpty())
+                {
+                    Find.SignalManager.SendSignal(new Signal(completionSignal));
+                }
             }
             else if (signal.tag == inSignalShuttleSentUnsatisfied)
             {
@@ -505,6 +566,13 @@ namespace JusticiarValor
             Scribe_Values.Look(ref inSignalShuttleSent, "inSignalShuttleSent");
             Scribe_Values.Look(ref inSignalShuttleSentUnsatisfied, "inSignalShuttleSentUnsatisfied");
             Scribe_Values.Look(ref outSignalColonyConverted, "outSignalColonyConverted");
+            Scribe_Values.Look(ref outSignalMissionSucceeded, "outSignalMissionSucceeded");
+            Scribe_Values.Look(ref outSignalMissionFailed, "outSignalMissionFailed");
+            Scribe_Values.Look(ref blueprintMission, "blueprintMission", false);
+            Scribe_Values.Look(ref suppressCodex, "suppressCodex", false);
+            Scribe_Values.Look(ref requiredSermons, "requiredSermons", 0);
+            Scribe_Values.Look(ref qualifyingSermons, "qualifyingSermons", 0);
+            Scribe_Values.Look(ref poorAttendance, "poorAttendance", false);
             Scribe_Values.Look(ref nextSermonTick, "nextSermonTick", -1);
             Scribe_Values.Look(ref departing, "departing", false);
             Scribe_Values.Look(ref colonyConverted, "colonyConverted", false);

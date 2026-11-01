@@ -543,7 +543,9 @@ namespace JusticiarValor
                 outcome = outcome,
                 turnout = outcome == SermonOutcome.Held ? SermonRequests.Turnout(attendees, required, eligible) : 0f,
                 converts = converts,
-                listeners = listeners.Count
+                listeners = listeners.Count,
+                attendees = attendees,
+                eligible = eligible
             };
             JusticiarMissions.For(preacher)?.Notify_SermonEnded(result);
             Lord preacherLord = preacher?.GetLord();

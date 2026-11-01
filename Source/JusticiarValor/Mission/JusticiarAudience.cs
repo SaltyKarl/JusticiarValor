@@ -86,13 +86,22 @@ namespace JusticiarValor
                 SermonRequests.FaithName.Named("FAITH"), visit.VisitTicks.ToStringTicksToPeriod().Named("DURATION"),
                 settings.requiredFraction.ToStringPercent().Named("FRACTION"), settings.goodwillPerConvert.Named("GOODWILL"),
                 settings.fullTurnoutGoodwill.ToString("0.#").Named("BONUS"), settings.maxTurnoutGoodwill.Named("MAXBONUS"),
-                (-settings.refusalGoodwill).Named("PENALTY"), (-visit.TurnedAwayGoodwill).Named("DECLINE"));
+                (-settings.refusalGoodwill).Named("PENALTY"), (-visit.TurnedAwayGoodwill).Named("DECLINE"),
+                settings.codexMinMood.ToStringPercent().Named("MOOD"));
             var node = new DiaNode(text);
-            node.options.Add(new DiaOption("MJV_AudienceHost".Translate(justiciar.Named("PREACHER")))
+            node.options.Add(new DiaOption("MJV_AudienceHostFor".Translate(justiciar.Named("PREACHER"), MJV_DefOf.MJV_ImperialCodexAuspex.LabelCap.Named("GIFT")))
             {
                 action = visit.Host,
                 resolveTree = true
             });
+            if (visit.OfferedGear != null)
+            {
+                node.options.Add(new DiaOption("MJV_AudienceHostFor".Translate(justiciar.Named("PREACHER"), visit.OfferedGear.LabelCap.Named("GIFT")))
+                {
+                    action = () => visit.Host(true),
+                    resolveTree = true
+                });
+            }
             node.options.Add(new DiaOption("MJV_AudienceDecline".Translate(justiciar.Named("PREACHER"), (-visit.TurnedAwayGoodwill).Named("DECLINE")))
             {
                 action = () => visit.TurnAway(false),

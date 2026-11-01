@@ -47,6 +47,8 @@ namespace JusticiarValor
 
         public static ResearchProjectDef MJV_JusticiarGear;
 
+        public static ThingSetMakerDef MJV_Reward_JusticiarGear;
+
         public static DutyDef MJV_DeliverSermon;
         public static DutyDef MJV_HearSermon;
 

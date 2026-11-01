@@ -42,19 +42,7 @@ public static class JusticiarPilotoBaker
     private static readonly Clip[] Clips =
     {
         new Clip("PsychicWave", "Holy/AOE_Explosion_Holy", 1.4f, false, 2.6f),
-        new Clip("ThreatPulse", "Tech/MagicRing_Hexagon", 1.8f),
-        new Clip("PsychicShield", "Tech/TechMagic_TechnoShield", 2.4f, true, 1.2f),
-        new Clip("InvictusBurst", "Wind/GaleWind_Burst", 0.85f, false, 0.2f),
-        new Clip("CelestialBlade", "Holy/Angel's Pierce", 1.4f),
-        new Clip("Deflect", "Holy/Angelical Shield Guard", 1.8f, false, 0f, true),
         new Clip("PsyOrb", "Arcane/Orb_Arcane", 2.4f, true, 1.2f),
-        new Clip("OrbFlight", "Arcane/Projectile_Arcane", 1.2f, true, 0.3f),
-        new Clip("OrbImpact", "Arcane/Impact_Arcane", 1.2f),
-        new Clip("SermonHalo", "Holy/HolyRing", 3.2f, true, 1.2f),
-        new Clip("Conversion", "Arcane/VFX_LevelUpLevelUp_Arcane", 2f),
-        new Clip("ShieldHit", "Tech/Tech_ImpactSimple", 0.9f),
-        new Clip("ShieldBreak", "Tech/Tech_CubeBurst", 1.4f),
-        new Clip("ShieldRecharge", "Holy/MagicRing_Blessed", 1.5f),
         new Clip("AfterimageWake", "Wind/GaleWind_Woosh", 0.8f),
         // 2026-10-21 composites. Windows crop each source to its visible action.
         new Clip("ThreatLock", "Tech/Tech_GroundAOEIndicator", 0.9f, false, 0.02f),

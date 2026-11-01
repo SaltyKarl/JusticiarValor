@@ -3,7 +3,8 @@
 
 	<!-- Imperial codex-auspex. Sold to the Empire's tribute collectors it earns royal favor (RoyalFavorValue, see
 	     Patches/Traders_ImperialCodexAuspex.xml); studied by a colonist where it lies, it gives a random imperial techprint
-	     (CompUseEffect_ImperialBlueprint). A justiciar leaves one after a mission he was treated well on (MissionRecord). -->
+	     (CompUseEffect_ImperialBlueprint). A visiting missionary can offer one as his parting gift; other titled imperial
+	     NPCs rarely carry one. The sheltered justiciar's existing quest reward is unchanged. -->
 	<ThingDef ParentName="ResourceBase">
 		<defName>MJV_ImperialCodexAuspex</defName>
 		<label>imperial codex-auspex</label>

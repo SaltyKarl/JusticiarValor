@@ -37,6 +37,9 @@ namespace JusticiarValor
         public float turnout;
         public List<Pawn> converts = new List<Pawn>();
         public int listeners;
+        // The original eligible congregation and the people who stayed, not incidental passers-by.
+        public int attendees;
+        public int eligible;
     }
 
     // A justiciar's mission to the colony: his visit (LordJob_MJV_MissionaryVisit) or his stay as a lodger
@@ -195,6 +198,11 @@ namespace JusticiarValor
         // drop pod.
         public void Settle(Pawn justiciar, SermonSettings settings, Map map)
         {
+            Settle(justiciar, settings, map, null, true);
+        }
+
+        public void Settle(Pawn justiciar, SermonSettings settings, Map map, Thing chosenGift = null, bool giveCodex = true)
+        {
             if (settled)
             {
                 return;
@@ -203,11 +211,21 @@ namespace JusticiarValor
             Faction empire = ImperialFaith.Empire;
             if (empire == null || empire.defeated || empire.HostileTo(Faction.OfPlayer) || justiciar == null)
             {
+                chosenGift?.Destroy();
                 return;
             }
             int bonus = TurnoutGoodwill(settings);
             int penalty = refusals * settings.refusalGoodwill;
-            bool codex = EarnedCodex(settings) && map != null && MJV_DefOf.MJV_ImperialCodexAuspex != null;
+            bool earnedGift = EarnedCodex(settings) && map != null;
+            Thing gift = earnedGift ? chosenGift : null;
+            if (earnedGift && gift == null && giveCodex && MJV_DefOf.MJV_ImperialCodexAuspex != null)
+            {
+                gift = ThingMaker.MakeThing(MJV_DefOf.MJV_ImperialCodexAuspex);
+            }
+            if (!earnedGift)
+            {
+                chosenGift?.Destroy();
+            }
             if (sermonsHeld == 0 && refusals == 0)
             {
                 return;
@@ -221,22 +239,22 @@ namespace JusticiarValor
                 empire.TryAffectGoodwillWith(Faction.OfPlayer, penalty, true, true, MJV_DefOf.MJV_SermonsRefused);
             }
             LookTargets look = null;
-            if (codex)
+            string giftLabel = gift?.LabelCap;
+            if (gift != null)
             {
-                Thing gift = ThingMaker.MakeThing(MJV_DefOf.MJV_ImperialCodexAuspex);
                 IntVec3 drop = DropCellFinder.TradeDropSpot(map);
                 DropPodUtility.DropThingsNear(drop, map, new List<Thing> { gift });
                 look = new LookTargets(new TargetInfo(drop, map));
             }
             TaggedString text = "MJV_MissionSettledText".Translate(justiciar.Named("JUSTICIAR"), empire.Named("FACTION"), sermonsHeld.Named("HELD"),
                 bonus.ToStringWithSign().Named("BONUS"), refusals.Named("REFUSED"), penalty.ToStringWithSign().Named("PENALTY"));
-            if (codex)
+            if (gift != null)
             {
-                text += "\n\n" + "MJV_MissionSettledCodex".Translate(justiciar.Named("JUSTICIAR"));
+                text += "\n\n" + "MJV_MissionSettledGift".Translate(justiciar.Named("JUSTICIAR"), giftLabel.Named("GIFT"));
             }
-            else if (refusals == 0 && sermonsHeld > 0)
+            else if ((giveCodex || chosenGift != null) && refusals == 0 && sermonsHeld > 0)
             {
-                text += "\n\n" + "MJV_MissionSettledNoCodex".Translate(justiciar.Named("JUSTICIAR"), settings.codexMinMood.ToStringPercent());
+                text += "\n\n" + "MJV_MissionSettledNoGift".Translate(justiciar.Named("JUSTICIAR"), settings.codexMinMood.ToStringPercent().Named("MOOD"));
             }
             Find.LetterStack.ReceiveLetter("MJV_MissionSettledLabel".Translate(justiciar.Named("JUSTICIAR")), text,
                 bonus + penalty >= 0 ? LetterDefOf.PositiveEvent : LetterDefOf.NegativeEvent, look);

@@ -5,11 +5,10 @@
        colonists to the imperial faith (JusticiarValor.QuestPart_MJV_LodgerSermons). Each sermon is a ritual the colony
        holds, with at least the share of its conscious colonists set by sermon/requiredFraction (the texts say half), or
        refuses (JusticiarValor.SermonRequests). When he leaves, what his sermons earned and cost is settled with the
-       Empire, and a well-treated justiciar leaves an imperial codex-auspex (JusticiarValor.MissionRecord). He leaves
+       Empire. Ordinary missions promise equipment; the stricter variant promises a native techprint. He leaves
        early once the whole colony has converted; rarely, a convert follows him to serve the Empire. Needs Ideology. -->
-  <QuestScriptDef MayRequire="Ludeon.RimWorld.Ideology">
-    <defName>MJV_ImperialMission</defName>
-    <rootSelectionWeight>0.8</rootSelectionWeight>
+  <QuestScriptDef Name="MJV_ImperialMissionBase" Abstract="True" MayRequire="Ludeon.RimWorld.Ideology">
+    <rootSelectionWeight>0.6</rootSelectionWeight>
     <rootMinPoints>0</rootMinPoints>
     <rootMinProgressScore>2</rootMinProgressScore>
     <expireDaysRange>3~6</expireDaysRange>
@@ -30,9 +29,38 @@
     </questNameRules>
     <questDescriptionRules>
       <rulesStrings>
-        <li>questDescription->[missionary_nameFull], a justiciar of [faithName] sent by [empire_name], asks to stay at [map_definite] for [missionDurationTicks_duration] to bring the imperial faith to your people.\n\nEvery day or so, [missionary_nameDef] will ask your colony to assemble for a sermon. You must call at least half of your conscious colonists to hear it, or refuse. Every sermon shakes the certainty of those who do not share [missionary_possessive] faith; those whose certainty breaks will convert, and [empire_name] will look kindly on every convert.\n\nA congregation larger than the one [missionary_nameDef] asked for pleases [missionary_objective], and [empire_name] will hear of it when [missionary_nameDef] returns. Every sermon you refuse or cancel offends [missionary_objective], and will cost you goodwill with [empire_name] when [missionary_nameDef] returns. Hold all of [missionary_possessive] sermons and keep [missionary_objective] content, and [missionary_nameDef] will leave you an imperial codex-auspex.\n\n[missionary_nameDef] is a titled noble of the Empire and expects quarters fitting [missionary_possessive] rank. [missionary_nameDef] will not do manual work, and an imperial shuttle will bring [missionary_objective] and collect [missionary_objective] again. If your whole colony takes up the faith, [missionary_nameDef] will consider [missionary_possessive] work done and leave early.\n\nIt is said that, now and then, a new believer follows a justiciar back to the Empire.</li>
+        <li>questDescription->[missionary_nameFull], a justiciar of [faithName] sent by [empire_name], asks to stay at [map_definite] for [missionDurationTicks_duration] to bring the imperial faith to your people.\n\nEvery day or so, [missionary_nameDef] will ask your colony to assemble for a sermon. You must call at least [missionAttendance] of your conscious colonists to hear it, or refuse. Every sermon shakes the certainty of those who do not share [missionary_possessive] faith; those whose certainty breaks will convert, and [empire_name] will look kindly on every convert.\n\nA congregation larger than the one [missionary_nameDef] asked for pleases [missionary_objective], and [empire_name] will hear of it when [missionary_nameDef] returns. Every sermon you refuse or cancel offends [missionary_objective], and will cost you goodwill with [empire_name] when [missionary_nameDef] returns. [missionRewardTerms]\n\n[missionary_nameDef] is a titled noble of the Empire and expects quarters fitting [missionary_possessive] rank. [missionary_nameDef] will not do manual work, and an imperial shuttle will bring [missionary_objective] and collect [missionary_objective] again. If your whole colony takes up the faith, [missionary_nameDef] will consider [missionary_possessive] work done and leave early.\n\nIt is said that, now and then, a new believer follows a justiciar back to the Empire.</li>
       </rulesStrings>
     </questDescriptionRules>
+    <root Class="QuestNode_SubScript">
+      <def>MJV_ImperialMission_Worker</def>
+      <parms><blueprintMission>false</blueprintMission></parms>
+    </root>
+  </QuestScriptDef>
+
+  <QuestScriptDef ParentName="MJV_ImperialMissionBase" MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>MJV_ImperialMission</defName>
+  </QuestScriptDef>
+
+  <QuestScriptDef ParentName="MJV_ImperialMissionBase" MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>MJV_ImperialMission_Blueprint</defName>
+    <rootSelectionWeight>0.2</rootSelectionWeight>
+    <questNameRules>
+      <rulesStrings Inherit="False">
+        <li>questName->An imperial commission</li>
+        <li>questName->Blueprints of the justiciars</li>
+        <li>questName->[missionary_nameDef]'s commission</li>
+      </rulesStrings>
+    </questNameRules>
+    <root Class="QuestNode_SubScript">
+      <parms><blueprintMission>true</blueprintMission></parms>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Both offers use the same vanilla shuttle, failure and reward parts. Only their requirements differ. -->
+  <QuestScriptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>MJV_ImperialMission_Worker</defName>
+    <randomlySelectable>false</randomlySelectable>
     <root Class="QuestNode_Sequence">
       <nodes>
         <li Class="QuestNode_GetMap" />
@@ -42,12 +70,16 @@
           <minUnconverted>2</minUnconverted>
         </li>
 
-        <li Class="QuestNode_SetChallengeRating">
-          <challengeRating>1</challengeRating>
-        </li>
         <li Class="QuestNode_Set">
           <name>missionDurationTicks</name>
           <value>$(roundToTicksRough(randInt(6, 10) * 60000))</value>
+        </li>
+        <li Class="JusticiarValor.QuestNode_MJV_MissionReward">
+          <blueprintMission>$blueprintMission</blueprintMission>
+          <gearBudget>$(2800 + 150 * $missionDurationTicks / 60000)</gearBudget>
+        </li>
+        <li Class="QuestNode_SetChallengeRating">
+          <challengeRating>$missionChallenge</challengeRating>
         </li>
         <li Class="QuestNode_Set">
           <name>shuttleLeaveDelayTicks</name>
@@ -123,7 +155,7 @@
         </li>
         <li Class="QuestNode_Letter">
           <label>Justiciar arrived: [missionary_nameDef]</label>
-          <text>[missionary_nameDef], a justiciar of [faithName], has arrived on an imperial shuttle. [missionary_nameDef] will stay with you for [missionDurationTicks_duration] and ask your colony to hold a sermon every day or so.\n\nWhen [missionary_nameDef] asks, choose who will listen: at least half of your conscious colonists. Calling more pleases [missionary_objective]; refusing offends [missionary_objective]. Those who do not share [missionary_possessive] faith may convert.</text>
+          <text>[missionary_nameDef], a justiciar of [faithName], has arrived on an imperial shuttle. [missionary_nameDef] will stay with you for [missionDurationTicks_duration] and ask your colony to hold a sermon every day or so.\n\nWhen [missionary_nameDef] asks, choose who will listen: at least [missionAttendance] of your conscious colonists. Calling more pleases [missionary_objective]; refusing offends [missionary_objective]. Those who do not share [missionary_possessive] faith may convert.</text>
           <lookTargets>$lodgers</lookTargets>
         </li>
 
@@ -159,6 +191,8 @@
 
         <li Class="JusticiarValor.QuestNode_MJV_LodgerSermons">
           <preacher>$missionary</preacher>
+          <blueprintMission>$blueprintMission</blueprintMission>
+          <suppressCodex>true</suppressCodex>
           <intervalTicks>60000~90000</intervalTicks>
           <firstSermonDelayTicks>5000~10000</firstSermonDelayTicks>
           <sermon>
@@ -176,6 +210,8 @@
           <shuttle>$pickupShipThing</shuttle>
           <inSignalShuttleArrived>ShuttleArrived</inSignalShuttleArrived>
           <outSignalColonyConverted>ColonyConverted</outSignalColonyConverted>
+          <outSignalMissionSucceeded>MissionSucceeded</outSignalMissionSucceeded>
+          <outSignalMissionFailed>MissionRequirementsFailed</outSignalMissionFailed>
         </li>
 
         <li Class="QuestNode_Set">
@@ -364,18 +400,38 @@
         </li>
 
         <li Class="QuestNode_Signal">
-          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <inSignal>MissionSucceeded</inSignal>
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_GiveRewards">
                 <parms>
+                  <thingRewardDisallowed>true</thingRewardDisallowed>
                   <allowGoodwill>true</allowGoodwill>
                   <allowRoyalFavor>true</allowRoyalFavor>
                 </parms>
               </li>
+              <li Class="QuestNode_AddItemsReward">
+                <items>$missionReward</items>
+              </li>
               <li Class="QuestNode_End">
                 <outcome>Success</outcome>
                 <sendStandardLetter>true</sendStandardLetter>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <li Class="QuestNode_Signal">
+          <inSignal>MissionRequirementsFailed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label>Commission incomplete: [resolvedQuestName]</label>
+                <letterDef>NegativeEvent</letterDef>
+                <text>[missionary_nameDef] has returned safely, but your colony did not meet the commission's requirements. The promised techprint will not be sent.\n\n[missionRewardTerms]</text>
+              </li>
+              <li Class="QuestNode_End">
+                <outcome>Fail</outcome>
               </li>
             </nodes>
           </node>

@@ -20,6 +20,7 @@ namespace JusticiarValor
         // When he first asks the colony for a sermon once hosted, and how long he lets it rest after each.
         public IntRange firstSermonDelayTicks = new IntRange(1500, 3000);
         public IntRange sermonIntervalTicks = new IntRange(30000, 45000);
+        public FloatRange rewardMarketValue = new FloatRange(2800f, 3000f);
         public SermonSettings sermon = new SermonSettings();
     }
 

@@ -18,7 +18,7 @@ namespace JusticiarValorValidation
     // hosted) and asking the colony for sermons (one left running across the save and reload, his mission settled when he
     // leaves), the lodging mission played to its end (a sermon held beyond the minimum, one refused, a convert called to
     // service, the settlement), and the disgraced sermon with its pursuing raid and its codex-auspex.
-    public sealed class MissionValidation
+    public sealed partial class MissionValidation
     {
         private static readonly FieldInfo effectsField = AccessTools.Field(typeof(MapComponent_JusticiarFx), "effects");
         private static readonly FieldInfo leaveTickField = AccessTools.Field(typeof(LordJob_MJV_MissionaryVisit), "leaveTick");
@@ -359,6 +359,8 @@ namespace JusticiarValorValidation
                 + sample.GetStatValue(StatDefOf.ConversionPower).ToStringPercent() + ")");
             Check(sample.royalty != null && sample.royalty.HasAnyTitleIn(empire), "a generated justiciar holds an imperial title (for royal favor rewards)");
             sample.Destroy();
+            CheckRewardGeneration(empire);
+            CheckCodexCarriers(empire);
 
             if (!ModsConfig.IdeologyActive || ImperialFaith.Ideo == null)
             {
@@ -369,6 +371,10 @@ namespace JusticiarValorValidation
             {
                 EnsureCongregation(5);
                 foreach (object step in LodgingMission(empire))
+                {
+                    yield return step;
+                }
+                foreach (object step in PrepareBlueprintSave())
                 {
                     yield return step;
                 }
@@ -499,7 +505,11 @@ namespace JusticiarValorValidation
                 yield return step;
             }
             Check(lastWait, "the justiciar reaches the colony");
-            job.Host();
+            Check(job.OfferedGear != null && job.OfferedGear.MarketValue <= 3000.01f,
+                "the event offers one displayed, lower-budget item before hosting");
+            savedEventGiftId = job.OfferedGear?.thingIDNumber ?? -1;
+            job.Host(true);
+            Check(job.ChoseGear && job.OfferedGear?.thingIDNumber == savedEventGiftId, "hosting records the displayed gear without rerolling it");
             Check(!job.AwaitingAudience && visit.CurLordToil is LordToil_DefendPoint && !(visit.CurLordToil is LordToil_MJV_AwaitAudience)
                 && job.LeaveTick == Find.TickManager.TicksGame + job.VisitTicks,
                 "hosted, he stays for his visit (" + job.VisitTicks.ToStringTicksToPeriod() + ")");
@@ -606,6 +616,11 @@ namespace JusticiarValorValidation
                 yield break;
             }
             Pawn justiciar = sermons.preacher;
+            Thing promisedGear = RewardItems(quest).SingleOrDefault();
+            Check(promisedGear?.def.thingSetMakerTags?.Contains(MissionRewards.GearTag) == true
+                && promisedGear.def != MJV_DefOf.MJV_ImperialCodexAuspex,
+                "the ordinary mission displays exactly one guaranteed justiciar item and no codex");
+            int codicesBeforeMission = map.listerThings.ThingsOfDef(MJV_DefOf.MJV_ImperialCodexAuspex).Count;
             Accept(quest);
             foreach (object step in TickUntil(() => justiciar.Spawned, 3000))
             {
@@ -616,6 +631,11 @@ namespace JusticiarValorValidation
             Check(justiciar.WorkTagIsDisabled(WorkTags.ManualDumb) && !justiciar.WorkTagIsDisabled(WorkTags.Social),
                 "the lodging justiciar does no manual work but can still talk");
 
+            // This scenario advances the first request immediately instead of waiting its normal 5,000–10,000 ticks.
+            // Bring the newly landed lodger to the colony first: on some quick-test maps the shuttle lands 180 cells
+            // away, and starting the sermon there would test travel time rather than attendance/conversion.
+            justiciar.Position = CellFinder.RandomClosewalkCellNear(Listeners().First().Position, map, 5);
+            justiciar.Notify_Teleported();
             PrepareCongregation();
             foreach (Pawn pawn in Listeners())
             {
@@ -659,6 +679,7 @@ namespace JusticiarValorValidation
             int listeners = 0;
             int preached = 0;
             var seen = new HashSet<string>();
+            var listenerStates = new HashSet<string>();
             foreach (object step in TickUntil(() =>
             {
                 if (SermonUtility.SermonOf(justiciar)?.lord.CurLordToil is LordToil_MJV_Sermon toil)
@@ -666,6 +687,13 @@ namespace JusticiarValorValidation
                     listeners = Math.Max(listeners, toil.Data.presentForTicks.Count);
                     preached = toil.Data.preachingTicks;
                     seen.Add(justiciar.CurJobDef?.defName + "/" + justiciar.mindState.duty?.def?.defName + "/" + justiciar.Position.DistanceTo(toil.lord.LordJob is LordJob_MJV_Sermon j ? j.Spot : justiciar.Position).ToString("0"));
+                    if (preached % 500 == 0)
+                    {
+                        foreach (Pawn listener in called)
+                            listenerStates.Add(listener.LabelShort + ": " + listener.CurJobDef?.defName + ", distance "
+                                + listener.Position.DistanceTo(sermon.Spot).ToString("0") + ", in area "
+                                + GatheringsUtility.InGatheringArea(listener.Position, sermon.Spot, map));
+                    }
                     return false;
                 }
                 return true;
@@ -678,6 +706,7 @@ namespace JusticiarValorValidation
             if (converts == 0)
             {
                 JusticiarValidation.Line("Lodging justiciar during the sermon (job/duty/distance to the spot): " + string.Join(", ", seen.Take(12)));
+                JusticiarValidation.Line("Listener states: " + string.Join("; ", listenerStates.Take(20)));
                 JusticiarValidation.Line("Called: " + string.Join(", ", called.Select(p => p.LabelShort + " " + (ImperialFaith.IsBeliever(p) ? "imperial" : p.Ideo?.name)
                     + " certainty " + p.ideo.Certainty.ToString("0.00") + " lord " + (p.GetLord()?.LordJob?.GetType().Name ?? "none")))
                     + "; justiciar faith " + justiciar.Ideo?.name + ", conversion power " + justiciar.GetStatValue(StatDefOf.ConversionPower).ToString("0.00")
@@ -749,6 +778,12 @@ namespace JusticiarValorValidation
                 yield return step;
             }
             Check(quest.State == QuestState.EndedSuccess, "the mission ends in success when the justiciar leaves (" + quest.State + ")");
+            foreach (object step in TickUntil(() => promisedGear?.Spawned == true, 1800))
+            {
+                yield return step;
+            }
+            Check(lastWait && map.listerThings.ThingsOfDef(MJV_DefOf.MJV_ImperialCodexAuspex).Count == codicesBeforeMission,
+                "the exact promised gear arrives, with no extra codex, even when a normal mission's sermon was refused");
             EndQuest(quest);
             Check(calledToService != null && calledToService.Faction == empire, "the called convert left the colony to serve the Empire");
             Check(sermons.Record.Settled && GotLetter("MJV_MissionSettledLabel".Translate(justiciar.Named("JUSTICIAR"))),
@@ -773,10 +808,13 @@ namespace JusticiarValorValidation
             Check(quest.PartsListForReading.OfType<QuestPart_Choice>().Any(c => c.choices.Any(ch => ch.rewards.OfType<Reward_Items>()
                 .Any(r => r.items.Any(t => t.def == MJV_DefOf.MJV_ImperialCodexAuspex)))), "the sheltered justiciar promises an imperial codex-auspex");
             Check(quest.PartsListForReading.OfType<QuestPart_Incident>().Any(p => p.incident == IncidentDefOf.RaidEnemy), "a raid of pursuers is part of the quest");
+            // The blueprint commission is also live across this save. Identify the arriving pawn, not the first
+            // justiciar lodger on the map (which may belong to that other quest).
+            var existingLodgers = new HashSet<int>(map.mapPawns.FreeColonistsSpawned.Where(p => p.IsQuestLodger()).Select(p => p.thingIDNumber));
             Accept(quest);
             Pawn justiciar = null;
             foreach (object step in TickUntil(() => (justiciar = map.mapPawns.FreeColonistsSpawned.FirstOrDefault(p => p.kindDef == MJV_DefOf.MJV_Justiciar
-                && p.IsQuestLodger())) != null, 600))
+                && p.IsQuestLodger() && !existingLodgers.Contains(p.thingIDNumber))) != null, 600))
             {
                 yield return step;
             }
@@ -818,7 +856,20 @@ namespace JusticiarValorValidation
                 Lord visit = preacher?.GetLord();
                 if (visit?.LordJob is LordJob_MJV_MissionaryVisit job)
                 {
+                    Check(job.ChoseGear && job.OfferedGear?.thingIDNumber == savedEventGiftId,
+                        "the selected event reward and its identity survive saving and loading");
+                    Thing selectedGift = job.OfferedGear;
                     Check(job.Record.sermonsHeld == 2, "both of his sermons are recorded for his return (" + job.Record.sermonsHeld + ")");
+                    // This is the successful-delivery case. A noble standing outdoors on a random quick-test map can
+                    // otherwise finish below the gift's mood threshold, correctly withholding it. Supply known happy
+                    // samples before settling; the blueprint boundary checks independently exercise low average mood.
+                    preacher.needs.mood.CurLevelPercentage = 0.85f;
+                    for (int sample = 0; sample < 128 && job.Record.AverageMood < 0.6f; sample++)
+                    {
+                        job.Record.SampleMood(preacher);
+                    }
+                    Check(job.Record.EarnedCodex(job.Settings), "the successful event delivery has met its hospitality conditions (average mood "
+                        + job.Record.AverageMood.ToStringPercent() + ")");
                     int bonus = job.Record.TurnoutGoodwill(job.Settings);
                     int goodwill0 = empire.PlayerGoodwill;
                     leaveTickField.SetValue(job, Find.TickManager.TicksGame);
@@ -829,11 +880,22 @@ namespace JusticiarValorValidation
                     Check(lastWait, "the justiciar leaves when his visit is over");
                     Check(job.Record.Settled && GotLetter("MJV_MissionSettledLabel".Translate(preacher.Named("JUSTICIAR"))) && empire.PlayerGoodwill >= goodwill0 + bonus,
                         "his mission is settled when he leaves: +" + bonus + " goodwill for his congregations (" + goodwill0 + " -> " + empire.PlayerGoodwill + ")");
+                    foreach (object step in TickUntil(() => selectedGift?.Spawned == true, 1800))
+                    {
+                        yield return step;
+                    }
+                    Check(lastWait && job.OfferedGear == null, "the saved choice is delivered once and released from the visit's ownership");
                     foreach (Pawn pawn in visit.ownedPawns.ToList())
                     {
                         pawn.Destroy();
                     }
                 }
+            }
+
+            // Independent reward assertions still run if the older raid/shuttle scenario later fails.
+            foreach (object step in FinishBlueprintSave())
+            {
+                yield return step;
             }
 
             Quest disgraced = Find.QuestManager.QuestsListForReading.FirstOrDefault(q => q.id == disgracedQuestId);
@@ -876,7 +938,7 @@ namespace JusticiarValorValidation
             QuestPart_ShuttleDelay shuttleDelay = disgraced.PartsListForReading.OfType<QuestPart_ShuttleDelay>().First();
             shuttleDelay.DebugForceEnd();
             Thing shuttle = null;
-            foreach (object step in TickUntil(() => (shuttle = map.listerThings.AllThings.FirstOrDefault(t => t.TryGetComp<CompShuttle>()?.requiredPawns.Contains(justiciar) == true && t.Spawned)) != null, 1500))
+            foreach (object step in TickUntil(() => (shuttle = map.listerThings.AllThings.FirstOrDefault(t => t.TryGetComp<CompShuttle>()?.requiredPawns.Contains(justiciar) == true && t.Spawned)) != null, 6000))
             {
                 yield return step;
             }

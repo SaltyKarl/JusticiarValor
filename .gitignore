@@ -3,26 +3,47 @@
 ~$*
 
 # Build intermediates (Source/Directory.Build.props already redirects obj/ and bin/ to %TEMP%)
+# Keep the shipped 1.6/Assemblies and 1.7/Assemblies DLLs and both versions' shader assets tracked.
 [Oo]bj/
 [Bb]in/
+*.pdb
+*.dll.mdb
 *.user
 *.suo
 .vs/
 .idea/
 .vscode/
+
+# Python helper environments and caches
 __pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
 
 # Asset packs baked by RimWorld 1.7 (-BakeModAssetPacks / in-game Workshop upload)
 Assets.zip
 Assets.zip.*
 
 # Test and tool output
-Source/Tests/Output/
+/Source/Tests/Output/
 *.log
+*.tmp
+
+# Local release archives and staging copies (runtime folders above stay versioned)
+/JusticiarValor*.zip
+/Justiciar Valor*.zip
+/Releases/
+/dist/
 
 # Local runtime-Def investigation tools
-.rimsearcher/
+/.rimsearcher/
+/.codex/
+/.agents/
 
-# Windows Explorer files
+# OS metadata
 Thumbs.db
 desktop.ini
+.DS_Store

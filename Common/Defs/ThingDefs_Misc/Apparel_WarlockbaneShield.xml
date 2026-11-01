@@ -119,6 +119,8 @@
 		</comps>
 		<thingSetMakerTags>
 			<li>RewardStandardHighFreq</li>
+			<li>MJV_JusticiarGear</li>
+			<li>MJV_JusticiarArmor</li>
 		</thingSetMakerTags>
 		<tradeability>Sellable</tradeability>
 	</ThingDef>

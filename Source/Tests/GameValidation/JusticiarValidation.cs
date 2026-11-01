@@ -270,9 +270,12 @@ namespace JusticiarValorValidation
                 }
             }
             var visual = new ValidationScene(Find.CurrentMap);
-            foreach (object step in visual.Visuals())
+            if (!GenCommandLine.CommandLineArgPassed("jvskipvisuals"))
             {
-                yield return step;
+                foreach (object step in visual.Visuals())
+                {
+                    yield return step;
+                }
             }
             failures += scene.Failures + missions.Failures + reloadedMissions.Failures + visual.Failures;
         }

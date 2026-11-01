@@ -39,6 +39,9 @@ namespace JusticiarValor
                 Patch_ImperialJusticiars.BestowingRunIntMethod(),
                 prefix: AccessTools.Method(typeof(Patch_ImperialJusticiars), nameof(Patch_ImperialJusticiars.BestowingRunIntPrefix)),
                 transpiler: AccessTools.Method(typeof(Patch_ImperialJusticiars), nameof(Patch_ImperialJusticiars.BestowingRunIntTranspiler)));
+            Patch(harmony, "rare codex-auspex carried by imperial nobles",
+                Patch_ImperialCodexInventory.TargetMethod(),
+                postfix: AccessTools.Method(typeof(Patch_ImperialCodexInventory), nameof(Patch_ImperialCodexInventory.Postfix)));
         }
 
         // Each patch is applied on its own, so that one target changing in a game update only disables its own feature.

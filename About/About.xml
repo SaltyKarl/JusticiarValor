@@ -6,12 +6,12 @@
 		<li>Mortis</li>
         <li>Marukun</li>
 	</authors>
-	<url>https://github.com/Klon501/Mechanoids</url>
+	<url>https://github.com/mort1s1234/JusticiarValor</url>
 	<supportedVersions>
 		<li>1.6</li>
 		<li>1.7</li>
 	</supportedVersions>
-	<description>Justiciar Valor expands the Shattered Empire with new elite warrior-priests - Justiciars. The mod adds unique imperial figures, new high-tech eltex gear, spectacular visual effects, distinct combat mechanics, and thematic events, carefully balanced to fit the vanilla game.</description>
+	<description>Justiciar Valor expands the Shattered Empire with elite warrior-priests known as justiciars, their eltex arms and armor, and imperial missions. Host a justiciar to earn equipment, or fulfil a demanding commission for a justiciar gear techprint. Visiting missionaries offer a choice of parting gift, and imperial nobles occasionally carry a codex-auspex. Conversion missions require Ideology.</description>
 	<modDependencies>
 		<li>
 			<packageId>brrainz.harmony</packageId>

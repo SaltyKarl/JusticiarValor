@@ -1,75 +1,53 @@
 # Justiciar Valor: release package
 
-`JusticiarValor_2026-10-27_33e38ab.zip` is a playable copy of the mod built from commit `33e38ab` (main, 2026-10-27).
-It holds only the files the game loads. Unzipped into `RimWorld/Mods/`, it gives a `Justiciar Valor` folder that runs
-on its own (Harmony, Royalty and Vanilla Expanded Framework are still required).
+Build the 1.6 and 1.7 projects in Release configuration, then run `Source/Package-Release.ps1`.
+The script writes a dated zip under the system temporary folder's `JusticiarValor-release` directory;
+`-OutputPath` selects a different destination. Existing archives are never overwritten.
+The zip contains one `Justiciar Valor` folder, ready to install under `RimWorld/Mods/`.
 
-This note lists what the zip keeps and what it leaves out, so the same cut can be made by hand, for example before a
-Workshop upload: RimWorld 1.7 uploads every file in the mod folder, including `Source/` and the design documents.
-The zip does not pick up anything committed after `33e38ab`. For later XML or texture edits, make the cut again with
-this list.
+## Mission rewards
 
-## Keep: the game needs these
+- Ordinary Imperial Missions guarantee one displayed Justiciar item. The native random-option generator gives
+  weapons weight 95 and armor weight 5 among affordable branches. Rewards use tags, native quality/stuff selection,
+  and a market-value cap of 2,800 plus 150 per day of the planned 6–10 day stay (3,700–4,300).
+- The native market-value generator can sample only unaffordable qualities. A small subclass supplies an affordable
+  normal-quality fallback in that case, preventing those samples from repeatedly excluding the weapon branch.
+- Blueprint commissions share the ordinary mission's shuttle and failure handling. They promise one native
+  `MJV_JusticiarGear` techprint in place of equipment: three completed sermons, at least 75% attendance at each,
+  no refused/cancelled requests, and at least 70% average mood. Early full conversion waives only the sermon count.
+  The research project's existing requirement of two applied techprints is unchanged.
+- The event's existing reception dialogue offers a codex-auspex or one displayed item with a budget of 2,800–3,000.
+  The chosen item is saved, not rerolled when talking again, and delivered only if the existing hospitality conditions
+  are met. An unchosen or unearned item is discarded. Ordinary events offer no techprints.
+- Other newly generated titled Imperial NPCs have a 2% chance to carry one codex. The postfix only adds an item;
+  it does not replace inventory, alter titles or modify pawn-kind defs. Player pawns, justiciars, dead pawns,
+  requests forbidding gear, and inventories already containing a codex are excluded. Returning world pawns do not reroll.
+- Existing saved missions keep their old completion signals and codex rules. The Disgraced Sermon quest is unchanged.
+  New task/event state uses native Scribe, quest rewards, dialogue and drop pods. No global tick scan is added.
 
-| Path | What it is |
+## Runtime contents
+
+| Included | Purpose |
 |---|---|
-| `About/About.xml` | Name, description, dependencies |
-| `LoadFolders.xml` | Which folders 1.6 and 1.7 load |
-| `1.6/Assemblies/JusticiarValor.dll` | The mod's code for RimWorld 1.6 |
-| `1.6/AssetBundles/justiciarvalor_win`, `justiciarvalor_mac` | Effect shaders for 1.6 (no file extension, that is normal) |
-| `1.7/Assemblies/JusticiarValor.dll` | The mod's code for RimWorld 1.7 |
-| `1.7/Defs/ShaderDefs/`, `1.7/Shaders/*.glsl` | Effect shaders for 1.7. The game loads the `.glsl` files; they are not source code |
-| `Common/Defs/`, `Common/Patches/`, `Common/Languages/` | All XML content |
-| `Common/Textures/` | All textures, **except the 12 atlases listed further down** |
+| `About/About.xml`, `About/Preview.png`, `LoadFolders.xml` | Metadata, preview and version selection |
+| `1.6/Assemblies/JusticiarValor.dll`, `1.6/AssetBundles/justiciarvalor_win`, `justiciarvalor_mac` | RimWorld 1.6 code and shaders |
+| `1.7/Assemblies/JusticiarValor.dll`, `1.7/Defs/`, `1.7/Shaders/` | RimWorld 1.7 code and native shaders |
+| `Common/Defs/`, `Common/Patches/`, `Common/Languages/`, `Common/Textures/` | Shared runtime content |
 
-These look like leftovers but are used:
+Sources, raw art, tests and recordings, local tools, design documents, Git data and this note are omitted.
+The twelve obsolete animation atlases listed in the packaging script are already absent from the runtime texture
+folder. The baker now excludes them too, and packaging also filters any copies recreated by older tools.
+The active ten atlases, packed Sheet, apparel masks and eltex glow textures remain required.
+Old serialized classes/fields are retained where existing saves still need them.
 
-- The `m` files next to the Promachos textures (`PromachosArmor_Male_southm.png`, `PromachosHelmet_icon_m.png`, ...):
-  colour masks. The armor and helmet use the `CutoutComplex` shader, which loads them by name.
-- `PromachosArmor/Glow/` and `PromachosHelmet/Glow/`: the eltex glow.
-- In `Common/Textures/Effects/JusticiarValor/Piloto/`: `Sheet.png` and these 10 atlases, which the effects load:
-  AfterimageWake, OrbBurst, OrbGlitter, OrbPetals, Overdrive, PierceShock, PsychicWave, PsyOrb, ThreatLock, WaveShock.
+## Validation and remaining release work
 
-## Leave out: not part of the release
+`Source/Tests/Run-GameValidation.ps1` runs the real game with isolated save data and temporary test dependencies.
+Use `-SkipVisuals` for logic/save checks without screenshot assertions, and `-WithVPE` for Vanilla Psycasts Expanded.
+Use `-Version 1.6 -GameDir <1.6 installation>` for the Unity version. It also tests real reward generation, preview
+and delivery, blueprint boundaries, event reward persistence, and the rare inventory hook.
 
-| Path | Why |
-|---|---|
-| `Source/` | C# code, shader generators, tests, raw art (`Source/Textures`). Only needed to rebuild the DLLs |
-| `.git/`, `.gitattributes`, `.gitignore` | Git |
-| `.rimsearcher/` | Local tool |
-| `Justiciar Valor.docx`, `Justiciar Valor (中文).docx` | Design documents |
-| `JusticiarValor_*.zip`, `RELEASE.md` | This package and this note |
-| `_PublisherPlus.xml` | Settings of the PublisherPlus Workshop upload tool, not read by the game |
-
-### 12 effect atlases nothing uses any more (14 MB)
-
-In `Common/Textures/Effects/JusticiarValor/Piloto/`:
-
-| File | Size |
-|---|---|
-| `CelestialBlade.png` | 0.4 MB |
-| `Conversion.png` | 0.5 MB |
-| `Deflect.png` | 1.4 MB |
-| `InvictusBurst.png` | 1.1 MB |
-| `OrbFlight.png` | 1.8 MB |
-| `OrbImpact.png` | 0.4 MB |
-| `PsychicShield.png` | 2.0 MB |
-| `SermonHalo.png` | 1.7 MB |
-| `ShieldBreak.png` | 0.5 MB |
-| `ShieldHit.png` | 0.4 MB |
-| `ShieldRecharge.png` | 2.0 MB |
-| `ThreatPulse.png` | 1.9 MB |
-
-Neither DLL (1.6, 1.7) and no Def refers to these names, so the game never shows them. It still loads every texture
-under `Textures/` at startup, though, so they only cost loading time and memory. They are safe to delete from the repo.
-If you do, tell Marukun: the Unity baking tool (`Source/Shaders/Unity/JusticiarPilotoBaker.cs`) still lists them and
-would bake them again.
-
-## Before publishing
-
-- `About/About.xml` has `<url>https://github.com/Klon501/Mechanoids</url>`, which looks copied from another mod. It
-  should probably be `https://github.com/mort1s1234/JusticiarValor`. The zip still has the old url.
-- To upload to the Workshop from `Mods/Justiciar Valor`, first move everything under "Leave out" out of the folder
-  (and put it back afterwards), or upload a folder that holds only the zip's contents.
-- Uploading with PublisherPlus: `_PublisherPlus.xml` excludes `Source` and the git files, but not this zip, this note
-  or the 12 unused atlases, so they would be uploaded too. Add them to its exclude list first.
+English descriptions and new translation keys are included. Mortis handles translations; the separately arranged
+Combat Extended patch remains external work. Neither is represented as finished by this package.
+PublisherPlus exclusions cover development material. For the native Workshop uploader, publish the clean package
+contents: the development checkout still contains sources and recordings that should not be uploaded.

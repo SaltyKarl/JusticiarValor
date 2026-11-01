@@ -100,6 +100,8 @@ namespace JusticiarValor
         private int firstSermonDelayTicks;
         private int turnedAwayGoodwill;
         private int audienceEndTick;
+        private Thing offeredGear;
+        private bool choseGear;
 
         public StateGraph exitSubgraph;
 
@@ -118,6 +120,8 @@ namespace JusticiarValor
             firstSermonDelayTicks = ext.firstSermonDelayTicks.RandomInRange;
             turnedAwayGoodwill = ext.turnedAwayGoodwill.RandomInRange;
             audienceEndTick = Find.TickManager.TicksGame + ext.audienceTicks;
+            List<Thing> rewards = MissionRewards.GenerateGear(ext.rewardMarketValue.RandomInRange, faction);
+            offeredGear = rewards.Count > 0 ? rewards[0] : null;
         }
 
         public Pawn Preacher => preacher;
@@ -130,6 +134,10 @@ namespace JusticiarValor
         public int VisitTicks => visitTicks;
 
         public int TurnedAwayGoodwill => turnedAwayGoodwill;
+
+        public Thing OfferedGear => offeredGear;
+
+        public bool ChoseGear => choseGear;
 
         public int LeaveTick => leaveTick;
 
@@ -274,15 +282,31 @@ namespace JusticiarValor
         private void Depart()
         {
             request = null;
-            record.Settle(preacher, settings, Map);
+            Thing gift = choseGear ? offeredGear : null;
+            if (choseGear)
+            {
+                offeredGear = null; // Settlement now owns it, including disposal when the gift was not earned.
+            }
+            record.Settle(preacher, settings, Map, gift, giveCodex: !choseGear);
+            DiscardOfferedGear();
         }
 
         // The colony agreed to host him: his visit begins.
         public void Host()
         {
-            if (!AwaitingAudience)
+            Host(false);
+        }
+
+        public void Host(bool gearReward)
+        {
+            if (!AwaitingAudience || gearReward && offeredGear == null)
             {
                 return;
+            }
+            choseGear = gearReward;
+            if (!choseGear)
+            {
+                DiscardOfferedGear();
             }
             hosted = true;
             int now = Find.TickManager.TicksGame;
@@ -302,6 +326,7 @@ namespace JusticiarValor
                 return;
             }
             turnedAway = true;
+            DiscardOfferedGear();
             Faction empire = preacher.Faction;
             if (empire != null && !empire.HostileTo(Faction.OfPlayer) && turnedAwayGoodwill != 0)
             {
@@ -441,6 +466,18 @@ namespace JusticiarValor
             return base.GetReport(pawn);
         }
 
+        private void DiscardOfferedGear()
+        {
+            offeredGear?.Destroy();
+            offeredGear = null;
+        }
+
+        public override void Cleanup()
+        {
+            DiscardOfferedGear();
+            base.Cleanup();
+        }
+
         public override void ExposeData()
         {
             Scribe_References.Look(ref faction, "faction");
@@ -459,6 +496,8 @@ namespace JusticiarValor
             Scribe_Values.Look(ref firstSermonDelayTicks, "firstSermonDelayTicks", 0);
             Scribe_Values.Look(ref turnedAwayGoodwill, "turnedAwayGoodwill", 0);
             Scribe_Values.Look(ref audienceEndTick, "audienceEndTick", 0);
+            Scribe_Deep.Look(ref offeredGear, "offeredGear");
+            Scribe_Values.Look(ref choseGear, "choseGear", false);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 settings ??= new SermonSettings();

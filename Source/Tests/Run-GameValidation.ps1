@@ -8,6 +8,8 @@ param(
     [switch]$NoBuild,
     # Combat/gear, effect assets and save/reload, excluding the unrelated random mission/quest lifecycle.
     [switch]$EffectsOnly,
+    # Run all logic and save/reload checks without screenshot assertions (also works with hidden Unity windows).
+    [switch]$SkipVisuals,
     # Also load Vanilla Psycasts Expanded (Workshop 2842502659), for the Warlockbane checks against its psycasts.
     [switch]$WithVPE,
     # Explicitly requested interactive 1.6 validation: Unity needs a presented window for full map screenshots.
@@ -40,7 +42,10 @@ if (-not $GameDir) {
 $GameDir = (Resolve-Path $GameDir).Path
 $gameVersion = (Get-Content -LiteralPath (Join-Path $GameDir 'Version.txt') -TotalCount 1).Trim()
 if (-not $gameVersion.StartsWith("$Version.")) { throw "$GameDir is RimWorld $gameVersion, not $Version" }
-if (Get-Process -Name 'RimWorld', 'RimWorldWin64' -ErrorAction SilentlyContinue) { throw 'RimWorld is running; close it first.' }
+$gameExe = Join-Path $GameDir $(if ($Version -eq '1.7') { 'RimWorld.exe' } else { 'RimWorldWin64.exe' })
+if (Get-Process -Name 'RimWorld', 'RimWorldWin64' -ErrorAction SilentlyContinue | Where-Object { $_.Path -eq $gameExe }) {
+    throw "This RimWorld installation is running: $gameExe. Let it finish before validating."
+}
 $workshop = Join-Path $modRoot '..\..\..\..\workshop\content\294100'
 if ($Record) {
     if (-not $Ffmpeg) { $Ffmpeg = (Get-Command ffmpeg -ErrorAction SilentlyContinue).Source }
@@ -203,6 +208,7 @@ $($expansions -join "`n")
         if ($Record) { $arguments += '-jvrecord' }
     }
     if ($EffectsOnly) { $arguments += '-jvfxonly' }
+    if ($SkipVisuals) { $arguments += '-jvskipvisuals' }
     if ($Record -and $RecordOnly) { $arguments += "-jvrecordonly=$($RecordOnly -join ',')" }
     $started = Get-Date
     $process = Start-Process -FilePath $exe -WorkingDirectory $GameDir -ArgumentList $arguments -PassThru -WindowStyle $windowStyle `
@@ -250,6 +256,13 @@ if ($Record) {
     else { Write-Host "Clips: $clipDir" }
     if (-not (Select-String -LiteralPath $report -Pattern '^RECORDING_PASSED' -Quiet) -or $encoded.Values -contains $false -or $clips.Count -eq 0) {
         throw "Recording failed; see $report and $console"
+    }
+    return
+}
+
+if ($SkipVisuals) {
+    if (-not (Select-String -LiteralPath $report -Pattern '^RUNTIME_VALIDATION_PASSED' -Quiet)) {
+        throw "Runtime validation failed; see $report and $console"
     }
     return
 }

@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <!-- Vanilla generators filter the tagged equipment and choose one affordable item. Unaffordable branches are
+       omitted automatically; when both branches are available their weights are exactly 95:5. -->
+  <ThingSetMakerDef>
+    <defName>MJV_Reward_JusticiarGear</defName>
+    <root Class="ThingSetMaker_RandomOption">
+      <fixedParams>
+        <countRange>1</countRange>
+        <qualityGenerator>Reward</qualityGenerator>
+      </fixedParams>
+      <options>
+        <li>
+          <weight>95</weight>
+          <thingSetMaker Class="JusticiarValor.ThingSetMaker_MJV_Gear">
+            <fixedParams>
+              <filter><thingSetMakerTagsToAllow><li>MJV_JusticiarWeapon</li></thingSetMakerTagsToAllow></filter>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+        <li>
+          <weight>5</weight>
+          <thingSetMaker Class="JusticiarValor.ThingSetMaker_MJV_Gear">
+            <fixedParams>
+              <filter><thingSetMakerTagsToAllow><li>MJV_JusticiarArmor</li></thingSetMakerTagsToAllow></filter>
+            </fixedParams>
+          </thingSetMaker>
+        </li>
+      </options>
+    </root>
+  </ThingSetMakerDef>
+
   <!-- The imperial codex-auspex a sheltered justiciar leaves as thanks (quest MJV_DisgracedSermon). -->
   <ThingSetMakerDef>
     <defName>MJV_Reward_ImperialCodexAuspex</defName>

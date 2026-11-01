@@ -98,6 +98,10 @@
 			<li>ExoticMisc</li>
 			<li>WeaponMelee</li>
 		</tradeTags>
+		<thingSetMakerTags>
+			<li>MJV_JusticiarGear</li>
+			<li>MJV_JusticiarWeapon</li>
+		</thingSetMakerTags>
 		<comps Inherit="False">
 			<li Class="CompProperties_Forbiddable"/>
 			<li Class="JusticiarValor.CompProperties_PsyOrbSynthesizer">
@@ -241,6 +245,10 @@
 			<li>ExoticMisc</li>
 			<li>WeaponMelee</li>
 		</tradeTags>
+		<thingSetMakerTags>
+			<li>MJV_JusticiarGear</li>
+			<li>MJV_JusticiarWeapon</li>
+		</thingSetMakerTags>
 		<comps Inherit="False">
 			<li Class="CompProperties_Forbiddable"/>
 			<li Class="CompProperties_EquippableAbility">

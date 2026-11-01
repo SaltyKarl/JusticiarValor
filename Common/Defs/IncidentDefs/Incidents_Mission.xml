@@ -32,6 +32,7 @@
         <turnedAwayGoodwill>-14~-8</turnedAwayGoodwill>
         <firstSermonDelayTicks>1500~3000</firstSermonDelayTicks>
         <sermonIntervalTicks>30000~45000</sermonIntervalTicks>
+        <rewardMarketValue>2800~3000</rewardMarketValue>
         <sermon>
           <durationTicks>2000~2600</durationTicks>
           <certaintyFactor>2.5</certaintyFactor>
