@@ -1,0 +1,7 @@
+<LanguageData>
+	<!-- Common\Defs\ThingDefs_Misc\Apparel_WarlockbaneShield.xml -->
+	<!--                             EN: warlockbane shield -->
+	<MJV_Apparel_WarlockbaneShield.label>щит Погибель варлоков</MJV_Apparel_WarlockbaneShield.label>
+	<!--                                   EN: A round plasteel shield with a disc of tuned eltex. The eltex is tuned against hostile psychic fields: when it encounters a hostile targeted psychic spell, the shield deflects it aside and unleashes a counterspell of reflected psychic energy upon the caster.\n\nThe shield holds two charges and slowly restores them. -->
+	<MJV_Apparel_WarlockbaneShield.description>Круглый пластальный щит с диском из настроенного эльтекса. Эльтекс настроен против враждебных психических полей: столкнувшись с вражеским направленным психическим заклинанием, щит отклоняет его в сторону и обрушивает на заклинателя контрзаклинание из отражённой психической энергии.\n\nЩит вмещает два заряда и медленно их восстанавливает.</MJV_Apparel_WarlockbaneShield.description>
+</LanguageData>

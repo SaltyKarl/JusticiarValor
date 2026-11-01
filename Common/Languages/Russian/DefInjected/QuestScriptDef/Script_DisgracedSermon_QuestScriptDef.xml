@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<!-- Common\Defs\QuestScriptDefs\Script_DisgracedSermon.xml -->
+	<MJV_DisgracedSermon.questNameRules.rulesStrings>
+		<li>questName->Опасная проповедь</li>
+		<li>questName->Неудачная проповедь</li>
+		<li>questName->[missionary_nameDef] [fleeingAdj]</li>
+		<li>questName->Убежище для [missionary_nameDef]</li>
+		<li>questName->Юстициарий [fleeingAdj]</li>
+		<li>questName->Проповедник в беде</li>
+		<li>fleeingAdj->в опале</li>
+		<li>fleeingAdj->в бегах</li>
+		<li>fleeingAdj->в осаде</li>
+		<li>fleeingAdj->в изгнании</li>
+	</MJV_DisgracedSermon.questNameRules.rulesStrings>
+
+	<MJV_DisgracedSermon.questDescriptionRules.rulesStrings>
+		<li>questDescription->[missionary_nameFull], юстициарий веры [faithName], просит у вас убежища. [missionary_nameDef] стремится принести имперскую веру во фракцию [enemyFaction_name], но проповедь обернулась катастрофой: даже юстициарий не способен в одиночку выстоять против разъяренной толпы [enemyFaction_pawnsPlural], которая теперь идет по [missionary_possessive] пятам.\n\n[missionary_nameDef] прибудет пешком и останется в [map_definite], пока имперский челнок не заберет [missionary_objective] через [shelterTicks_duration]. Сохраните [missionary_objective] жизнь и отбейте нападение преследователей; [missionary_nameDef] будет сражаться на вашей стороне. [raidArrivalModeInfo]\n\n[raidPawnKinds]\n\n[missionary_nameDef] отказывается выполнять физическую работу. В знак благодарности [missionary_nameDef] обещает вам имперский кодекс-ауспекс.</li>
+	</MJV_DisgracedSermon.questDescriptionRules.rulesStrings>
+
+	<MJV_DisgracedSermon.root.nodes.PawnsArrive.customLetterLabel.slateRef>Прибытие юстициария: [missionary_nameDef]</MJV_DisgracedSermon.root.nodes.PawnsArrive.customLetterLabel.slateRef>
+	<MJV_DisgracedSermon.root.nodes.PawnsArrive.customLetterText.slateRef>[missionary_nameDef] достигает границ [map_definite] без сил после тяжелой дороги. [enemyFaction_pawnsPlural] фракции [enemyFaction_name] следуют по пятам.\n\nОберегайте [missionary_objective], пока за [missionary_objective] не прибудет имперский челнок через [shelterTicks_duration].</MJV_DisgracedSermon.root.nodes.PawnsArrive.customLetterText.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.Delay.node.customLetterLabel.slateRef>Преследователи: [enemyFaction_name]</MJV_DisgracedSermon.root.nodes.Delay.node.customLetterLabel.slateRef>
+	<MJV_DisgracedSermon.root.nodes.Delay.node.customLetterText.slateRef>Разъяренная толпа [enemyFaction_pawnsPlural] из фракции [enemyFaction_name] выследила [missionary_nameDef] в [map_definite]. Они не успокоятся, пока юстициарий, оскорбивший их веру, не будет мертв.</MJV_DisgracedSermon.root.nodes.Delay.node.customLetterText.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.ShuttleDelay.node.nodes.InspectString.inspectString.slateRef>Должен улететь на челноке</MJV_DisgracedSermon.root.nodes.ShuttleDelay.node.nodes.InspectString.inspectString.slateRef>
+	<MJV_DisgracedSermon.root.nodes.ShuttleDelay.node.nodes.Letter.label.slateRef>Челнок прибыл</MJV_DisgracedSermon.root.nodes.ShuttleDelay.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.ShuttleDelay.node.nodes.Letter.text.slateRef>Имперский челнок прибыл, чтобы забрать [missionary_nameDef]. Убедитесь, что [missionary_objective] погрузили на борт до того, как челнок улетит через [shuttleLeaveDelayTicks_duration].</MJV_DisgracedSermon.root.nodes.ShuttleDelay.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.lodgersDestroyed.node.nodes.Letter.label.slateRef>Гибель юстициария: {SUBJECT_definite}</MJV_DisgracedSermon.root.nodes.lodgersDestroyed.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.lodgersDestroyed.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которому вы предоставили убежище, погибает. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 10.</MJV_DisgracedSermon.root.nodes.lodgersDestroyed.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.lodgersArrested.node.nodes.Letter.label.slateRef>Юстициарий схвачен: {SUBJECT_definite}</MJV_DisgracedSermon.root.nodes.lodgersArrested.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.lodgersArrested.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которому вы предоставили убежище, был арестован. Вы провалили задание «[resolvedQuestName]».</MJV_DisgracedSermon.root.nodes.lodgersArrested.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.label.slateRef>Запрещенная операция: {SUBJECT_definite}</MJV_DisgracedSermon.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.text.slateRef>В отношении {SUBJECT_definite} была проведена недопустимая операция. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_DisgracedSermon.root.nodes.lodgersSurgeryViolation.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.label.slateRef>Ксеногерм поглощен: {SUBJECT_definite}</MJV_DisgracedSermon.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.text.slateRef>Ксеногерм {SUBJECT_definite}, юстициария, которому вы предоставили убежище, был насильственно поглощен. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_DisgracedSermon.root.nodes.lodgersXenogermAbsorbed.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.AnySignal-0.node.nodes.Letter.label.slateRef>Юстициарий потерян: {SUBJECT_definite}</MJV_DisgracedSermon.root.nodes.AnySignal-0.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.AnySignal-0.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которому вы предоставили убежище, пропал. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_DisgracedSermon.root.nodes.AnySignal-0.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.AnySignal-1.node.node.nodes.Letter.label.slateRef>Юстициарий потерян: {SUBJECT_definite}</MJV_DisgracedSermon.root.nodes.AnySignal-1.node.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.AnySignal-1.node.node.nodes.Letter.text.slateRef>{SUBJECT_definite}, юстициарий, которому вы предоставили убежище, присоединился к другой фракции. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_DisgracedSermon.root.nodes.AnySignal-1.node.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.label.slateRef>Задание провалено: [resolvedQuestName]</MJV_DisgracedSermon.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.text.slateRef>Фракция [empire_name] теперь враждебна к вам. Вы провалили задание «[resolvedQuestName]».</MJV_DisgracedSermon.root.nodes.empireBecameHostileToPlayer.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.label.slateRef>Челнок уничтожен</MJV_DisgracedSermon.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.text.slateRef>Челнок, отправленный за [missionary_nameDef], был уничтожен. Теперь [missionary_nameDef] уйдет пешком. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_DisgracedSermon.root.nodes.pickupShipThingDestroyed.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.label.slateRef>Челнок улетел</MJV_DisgracedSermon.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.text.slateRef>Челнок, отправленный за [missionary_nameDef], улетел без пассажира. Теперь [missionary_nameDef] уйдет пешком.</MJV_DisgracedSermon.root.nodes.pickupShipThingLeftBehind.node.nodes.Letter.text.slateRef>
+
+	<MJV_DisgracedSermon.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.label.slateRef>Задание провалено: [resolvedQuestName]</MJV_DisgracedSermon.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.label.slateRef>
+	<MJV_DisgracedSermon.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.text.slateRef>Челнок, отправленный за [missionary_nameDef], улетел без [missionary_objective]. Теперь [missionary_nameDef] уйдет пешком. Вы провалили задание «[resolvedQuestName]».\n\nОтношения с фракцией [empire_name] ухудшились на 5.</MJV_DisgracedSermon.root.nodes.pickupShipThingSentUnsatisfied.node.nodes.Letter.text.slateRef>
+</LanguageData>

@@ -1,0 +1,9 @@
+<LanguageData>
+	<!-- Common\Defs\ThingDefs_Items\Item_ImperialCodexAuspex.xml -->
+	<!--                                  EN: Study {0_label} -->
+	<MJV_ImperialCodexAuspex.comps.1.useLabel>Изучить {0_label}</MJV_ImperialCodexAuspex.comps.1.useLabel>
+	<!--                       EN: imperial codex-auspex -->
+	<MJV_ImperialCodexAuspex.label>имперский кодекс-ауспекс</MJV_ImperialCodexAuspex.label>
+	<!--                             EN: A heavy-duty tactical terminal carried by imperial Justiciars and the Imperial elite. Bound by active eltex circuits, it stores codified imperial scripture, judicial mandates, and lost high-tier tech schematics. Returning this terminal to the royal court grants substantial royal favor, or a colonist can analyze its data lattices to unlock a lost imperial blueprint. -->
+	<MJV_ImperialCodexAuspex.description>Прочный тактический терминал, который носят имперские юстициарии и имперская элита. Связанный активными эльтексовыми контурами, он хранит кодифицированные имперские писания, судебные предписания и утраченные схемы высокоуровневых технологий. Возврат этого терминала королевскому двору приносит значительную королевскую милость, либо колонист может проанализировать его массивы данных и открыть утраченный имперский чертёж.</MJV_ImperialCodexAuspex.description>
+</LanguageData>
